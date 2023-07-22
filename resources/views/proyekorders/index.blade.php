@@ -20,7 +20,7 @@
                                 <div class="card border-0 shadow-sm rounded">
                                     <div class="card-body">
                                        <a href="{{ route('proyekorders.create')}}" class="btn btn-md btn-success mb-3"> PO Baru </a>
-                                        <table class="table table-bordered">
+                                        <table class="table-auto table table-bordered">
                                             <thead>
                                             <tr>
                                                 <th scope="col">KODE PO</th>
@@ -33,17 +33,17 @@
                                             <tbody>
                                                 @forelse ($proyekorders as $po)
                                                     <tr>
-                                                        <td>{{ $po->kodepo }}</td>
-                                                        <td>{{ $po->namaproyek }}</td>
-                                                        <td>{{ $po->tglpo }}</td>
-                                                        <td>{!! $po->keteranganpoitem !!}</td>
+                                                        <td class="">{{ $po->kodepo }}</td>
+                                                        <td class="">{{ $po->namaproyek }}</td>
+                                                        <td class="">{{ $po->tglpo }}</td>
+                                                        <td class="break-all">{!! $po->keteranganpoitem !!}</td>
                                                         <td class="text-center">
                                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $po->id) }}" method="POST">
-                                                                <a href="{{ route('proyekorders.show', $po->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                                                <a href="{{ route('proyekorders.edit', $po->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                                                <a href="{{ route('proyekorders.show', $po->id) }}" class="rounded-md btn bg-sky-500 hover:bg-cyan-600 text-white">Tampil</a><hr>
+                                                                <a href="{{ route('proyekorders.edit', $po->id) }}" class="rounded-md btn bg-green-500 hover:bg-green-600 text-white">Ubah</a><hr>
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                                                <button type="submit" class="rounded-md btn bg-red-500 hover:bg-red-600 text-white">Hapus</button>
                                                             </form>
                                                         </td>
                                                     </tr>

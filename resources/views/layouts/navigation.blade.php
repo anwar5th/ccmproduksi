@@ -11,11 +11,10 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:items-center sm:-my-px sm:ml-10 sm:flex">
                     <!-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Produksi') }}
                     </x-nav-link> -->
-                    <a>
                     <x-dropdown align="left" width="48">
                         <x-slot name="trigger">
                             <x-nav-link>
@@ -35,7 +34,6 @@
                             </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
-                    </a>
                 </div>
             </div>
 
