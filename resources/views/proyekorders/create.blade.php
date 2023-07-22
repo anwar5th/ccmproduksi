@@ -76,7 +76,5 @@
             </div>
         </div>
     </div>
-    <script>
-    CKEDITOR.replace( 'keteranganpoitem' );
-    </script>
+
 </x-app-layout>

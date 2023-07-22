@@ -52,16 +52,15 @@ class ProyekOrderController extends Controller
         //validate form
         $this->validate($request, [
             'kodepo'     => 'required|min:3',
-            'namaproyek'   => 'required|min:5',
-            'keteranganpoitem'   => 'required|min:5',
+            'keteranganpoitem'   => 'required|min:5'
         ]);
 
-        //create post
-        Post::create([
+        //create Proyekorder
+        Proyekorder::create([
             'kodepo'     => $request->kodepo,
             'namaproyek'   => $request->namaproyek,
             'tglpo'   => $request->tglpo,
-            'keteranganpoitem'   => $request->keteranganpoitem,
+            'keteranganpoitem'   => $request->keteranganpoitem
         ]);
 
         //redirect to index

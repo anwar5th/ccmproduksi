@@ -55,5 +55,9 @@
             
         @endif
     </script>
+    <!-- Tambahan script -->
+    <!-- <script>
+        CKEDITOR.replace( 'keteranganpoitem' );
+    </script> -->
     </body>
 </html>
