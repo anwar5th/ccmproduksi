@@ -31,7 +31,7 @@
 
                                     <div class="form-group">
                                         <label class="font-weight-bold">Nama Proyek</label>
-                                        <input type="text" class="form-control @error('namaproyek') is-invalid @enderror" name="title" value="{{ old('namaproyek') }}" placeholder="">
+                                        <input type="text" class="form-control @error('namaproyek') is-invalid @enderror" name="namaproyek" value="{{ old('namaproyek') }}" placeholder="">
                                     
                                         <!-- error message untuk namaproyek -->
                                         @error('namaproyek')
@@ -43,7 +43,7 @@
 
                                     <div class="form-group">
                                         <label class="font-weight-bold">Tgl PO</label>
-                                        <input type="date" class="form-control @error('tglpo') is-invalid @enderror" name="title" value="{{ old('tglpo') }}" placeholder="">
+                                        <input type="date" class="form-control @error('tglpo') is-invalid @enderror" name="tglpo" value="{{ old('tglpo') }}" placeholder="">
                                     
                                         <!-- error message untuk tglpo -->
                                         @error('tglpo')

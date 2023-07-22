@@ -31,16 +31,16 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                @forelse ($proyekorders as $proyek)
+                                                @forelse ($proyekorders as $po)
                                                     <tr>
                                                         <td>{{ $po->kodepo }}</td>
                                                         <td>{{ $po->namaproyek }}</td>
                                                         <td>{{ $po->tglpo }}</td>
                                                         <td>{!! $po->keteranganpoitem !!}</td>
                                                         <td class="text-center">
-                                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                                                                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $po->id) }}" method="POST">
+                                                                <a href="{{ route('proyekorders.show', $po->id) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                                                <a href="{{ route('proyekorders.edit', $po->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
