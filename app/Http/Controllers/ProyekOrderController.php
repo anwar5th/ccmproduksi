@@ -69,4 +69,19 @@ class ProyekOrderController extends Controller
         //redirect to index
         return redirect()->route('proyekorders.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
+
+        /**
+     * show
+     *
+     * @param  mixed $id
+     * @return View
+     */
+    public function show(string $id): View
+    {
+        //get Proyekorder by ID
+        $proyekorders = Proyekorder::findOrFail($id);
+
+        //render view with Proyekorder
+        return view('proyekorders.show', compact('proyekorders'));
+    }
 }

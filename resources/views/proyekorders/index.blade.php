@@ -48,7 +48,7 @@
                                                         <td class="break-all">{!! $po->keteranganpoitem !!}</td>
                                                         <td class="text-center">
                                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $po->id) }}" method="POST">
-                                                                <a href="{{ route('proyekorders.show', $po->id) }}" class="rounded-md btn bg-sky-800 hover:bg-sky-600 text-white">Tampil SPK</a><hr>
+                                                                <a href="{{ route('proyekorders.show', $po->id) }}" class="rounded-md btn bg-sky-800 hover:bg-sky-600 text-white">Buat SPK</a><hr>
                                                                 <a href="{{ route('proyekorders.edit', $po->id) }}" class="rounded-md btn bg-sky-500 hover:bg-sky-600 text-white">Ubah</a><hr>
                                                                 @csrf
                                                                 @method('DELETE')
