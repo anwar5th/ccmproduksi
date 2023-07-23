@@ -6,6 +6,7 @@
         @csrf
 
         <!-- Email Address -->
+        <div class="">
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
@@ -42,6 +43,7 @@
             <x-primary-button class="ml-3">
                 {{ __('Log in') }}
             </x-primary-button>
+        </div>
         </div>
     </form>
 </x-guest-layout>
