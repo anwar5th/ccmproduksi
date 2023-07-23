@@ -65,8 +65,8 @@
                                         @enderror
                                     </div>
 
-                                    <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                                    <button type="reset" class="btn btn-md btn-warning">RESET</button>
+                                    <button type="submit" class="rounded-md btn bg-sky-800 hover:bg-sky-600 text-white">Simpan</button>
+                                    <button type="reset" class="rounded-md btn bg-sky-500 hover:bg-sky-600 text-white">Reset</button>
 
                                 </form> 
                             </div>

@@ -14,20 +14,29 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div>
-                                    <h3 class="text-center my-5"></h3>      
-                                    <hr>
+
                                 </div>
                                 <div class="card border-0 shadow-sm rounded">
                                     <div class="card-body">
                                        <a href="{{ route('proyekorders.create')}}" class="btn btn-md btn-success mb-3"> PO Baru </a>
-                                        <table class="table-auto table table-bordered">
-                                            <thead>
+                                       <!-- search -->
+                                        <div class="row justify-content-start">
+                                        <div class="col-12 col-sm-8 col-md-5">
+                                        <form action="" method="GET">
+                                            <div class="input-group mb-3">
+                                              <input name="keyword" class="form-control" placeholder="Search disini!" aria-label="Search disini!" aria-describedby="button-addon2" value="">
+                                            </div>
+                                        </form>
+                                        </div>
+                                        </div>
+                                        <table class="table">
+                                            <thead class="table-light">
                                             <tr>
-                                                <th scope="col">KODE PO</th>
-                                                <th scope="col">NAMA PO</th>
+                                                <th scope="col">Kode PO</th>
+                                                <th scope="col">Nama PO</th>
                                                 <th scope="col">Tgl PO</th>
-                                                <th scope="col">LIST ITEM SPK</th>
-                                                <th scope="col">.....</th>
+                                                <th scope="col">List Item SPK</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -39,8 +48,8 @@
                                                         <td class="break-all">{!! $po->keteranganpoitem !!}</td>
                                                         <td class="text-center">
                                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $po->id) }}" method="POST">
-                                                                <a href="{{ route('proyekorders.show', $po->id) }}" class="rounded-md btn bg-sky-500 hover:bg-cyan-600 text-white">Tampil</a><hr>
-                                                                <a href="{{ route('proyekorders.edit', $po->id) }}" class="rounded-md btn bg-green-500 hover:bg-green-600 text-white">Ubah</a><hr>
+                                                                <a href="{{ route('proyekorders.show', $po->id) }}" class="rounded-md btn bg-sky-800 hover:bg-sky-600 text-white">Tampil SPK</a><hr>
+                                                                <a href="{{ route('proyekorders.edit', $po->id) }}" class="rounded-md btn bg-sky-500 hover:bg-sky-600 text-white">Ubah</a><hr>
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" class="rounded-md btn bg-red-500 hover:bg-red-600 text-white">Hapus</button>

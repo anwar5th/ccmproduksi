@@ -20,11 +20,14 @@ class ProyekOrderController extends Controller
      *
      * @return View
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        //get proyekorders
-        $proyekorders = Proyekorder::latest()->paginate(5);
 
+        //get search
+        $keyword = $request->keyword;
+        //get proyekorders
+        $proyekorders = Proyekorder::where('namaproyek', 'LIKE', '%'.$keyword.'%')->orWhere('tglpo', $keyword)->latest()->paginate(5);
+        
         //render view with proyekorders
         return view('proyekorders.index', compact('proyekorders'));
     }
