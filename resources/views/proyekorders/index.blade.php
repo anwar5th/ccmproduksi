@@ -52,7 +52,7 @@
                                                                 <a href="{{ route('proyekorders.edit', $po->id) }}" class="rounded-md btn bg-sky-500 hover:bg-sky-600 text-white">Ubah</a><hr>
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="rounded-md btn bg-red-500 hover:bg-red-600 text-white">Hapus</button>
+                                                                <!-- <button type="submit" class="rounded-md btn bg-red-500 hover:bg-red-600 text-white">Hapus</button> -->
                                                             </form>
                                                         </td>
                                                     </tr>

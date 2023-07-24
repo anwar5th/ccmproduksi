@@ -11,6 +11,9 @@ use Illuminate\View\View;
 //return type redirectResponse
 use Illuminate\Http\RedirectResponse;
 
+//import Facade "Storage"
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Http\Request;
 
 class ProyekOrderController extends Controller
@@ -83,5 +86,67 @@ class ProyekOrderController extends Controller
 
         //render view with Proyekorder
         return view('proyekorders.show', compact('proyekorders'));
+    }
+
+        /**
+     * edit
+     *
+     * @param  mixed $id
+     * @return View
+     */
+    public function edit(string $id): View
+    {
+        //get post by ID
+        $proyekorders = Proyekorder::findOrFail($id);
+
+        //render view with post
+        return view('proyekorders.edit', compact('proyekorders'));
+    }
+    
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return RedirectResponse
+     */
+    public function update(Request $request, $id): RedirectResponse
+    {
+        //validate form
+        $this->validate($request, [
+            'kodepo'     => 'required|min:3',
+            'keteranganpoitem'   => 'required|min:5'
+        ]);
+
+        //get post by ID
+        $proyekorders = Proyekorder::findOrFail($id);
+
+        $proyekorders->update([
+            'kodepo'     => $request->kodepo,
+            'namaproyek'   => $request->namaproyek,
+            'tglpo'   => $request->tglpo,
+            'keteranganpoitem'   => $request->keteranganpoitem
+        ]);
+
+        //redirect to index
+        return redirect()->route('proyekorders.index')->with(['success' => 'Data Berhasil Diubah!']);
+    }
+
+        /**
+     * destroy
+     *
+     * @param  mixed $post
+     * @return void
+     */
+    public function destroy($id): RedirectResponse
+    {
+        //get post by ID
+        $proyekorders = Proyekorder::findOrFail($id);
+
+        //delete post
+        $proyekorders->delete();
+
+        //redirect to index
+        return redirect()->route('proyekorders.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }

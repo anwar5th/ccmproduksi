@@ -29,7 +29,7 @@
                             <x-dropdown-link :href="route('proyekorders.index')">
                                 {{ __('Produksi') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('profile.edit')">
+                            <x-dropdown-link :href="route('antrianmesin.index')">
                                 {{ __('Antrian Mechine') }}
                             </x-dropdown-link>
                         </x-slot>
