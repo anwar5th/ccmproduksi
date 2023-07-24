@@ -30,6 +30,11 @@
                             </div>
                             <br>
                             <div class="row justify-content-left input-group mb-3">
+                                <span class="input-group-text">Tgl SPK</span>
+                                <input type="text" class="form-control">
+                            </div>
+                            <br>
+                            <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text">Nama Barang</span>
                                 <input type="text" class="form-control">
                             </div>
