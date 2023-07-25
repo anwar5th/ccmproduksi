@@ -24,9 +24,7 @@
         </div> -->
         <div class="basis-2/5">
             <div class="w-full sm:max-w-md mt-40 ml-8 px-6 py-6 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                <div class="px-20 ">
-                <x-application-logo2 class="block h-9 w-auto fill-current text-gray-800" />
-                </div>
+               
                 {{ $slot }}
                 
             </div>

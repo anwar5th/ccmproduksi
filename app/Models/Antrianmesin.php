@@ -10,10 +10,11 @@ class Antrianmesin extends Model
     use HasFactory;
 
     protected $fillable = [
+        'proyekorders_id',
         'nospk',
         'tglspk',
         'namabarang',
-        'qtyspk',
+        'qtybarang',
 
         'tglmhotpress',
         'tglkhotpress',
@@ -40,4 +41,9 @@ class Antrianmesin extends Model
         'ketfinish',
 
     ];
+
+    public function antrianmesin()
+    {
+        return $this->belongsTo(Antrianmesin::class);
+    }
 }

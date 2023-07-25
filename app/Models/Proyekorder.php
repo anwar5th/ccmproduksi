@@ -15,4 +15,9 @@ class Proyekorder extends Model
         'tglpo',
         'keteranganpoitem',
     ];
+
+    public function antrianmesin()
+    {
+        return $this->hasMany(Antrianmesin::class);
+    }
 }

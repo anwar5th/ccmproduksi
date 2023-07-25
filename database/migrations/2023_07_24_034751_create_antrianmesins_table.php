@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nospk')->unique();
             $table->date('tglspk');
             $table->string('namabarang');
-            $table->string('qtybarang');
+            $table->smallInteger('qtybarang');
 
             $table->date('tglmhotpress')->nullable();
             $table->date('tglkhotpress')->nullable();
