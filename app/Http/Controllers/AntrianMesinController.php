@@ -69,7 +69,7 @@ class AntrianMesinController extends Controller
             'nospk'     => $request->nospk,
             'tglspk'   => $request->tglspk,
             'namabarang'   => $request->namabarang,
-            'qtyspk'   => $request->qtyspk,
+            'qtybarang'   => $request->qtybarang,
 
             'tglmhotpress'   => $request->tglmhotpress,
             'tglkhotpress'   => $request->tglkhotpress,

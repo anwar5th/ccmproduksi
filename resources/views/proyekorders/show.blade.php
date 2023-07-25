@@ -26,7 +26,13 @@
                             <form action="{{ route('antrianmesin.store') }}" method="POST" enctype="multipart/form-data">
                             
                             @csrf
-                            <input type="" class="form-control @error('proyekorders_id') is-invalid @enderror" name="proyekorders_id" value="{{ $proyekorders->id }}" placeholder="" disabled>
+
+                            <label for="personSelect">ID PO
+                                <select name="proyekorders_id" lass="form-control @error('proyekorders_id') is-invalid @enderror" name="proyekorders_id" value="{{ $proyekorders->id }}" placeholder="" >
+                                  <option>{{ $proyekorders->id }}</option>
+                                </select>
+                            </label>
+                            <br>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text">No SPK</span>
                                 <input type="text" class="form-control @error('nospk') is-invalid @enderror" name="nospk" value="{{ old('nospk') }}" placeholder="">
