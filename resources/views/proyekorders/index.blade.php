@@ -36,7 +36,7 @@
                                                 <th scope="col">Nama PO</th>
                                                 <th scope="col">Tgl PO</th>
                                                 <th scope="col">List Item SPK</th>
-                                                <th scope="col">Aksi</th>
+                                                <th scope="col">....</th>
                                             </tr>
                                             </thead>
                                             <tbody>

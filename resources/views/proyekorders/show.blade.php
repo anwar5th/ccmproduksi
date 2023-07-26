@@ -148,7 +148,22 @@
                     {{ __("List Barang SPK") }}
                     <div class="container mt-5">
                         <!-- Tambahan -->
-                        
+                         <table class="table" enctype="multipart/form-data">
+                                            <thead class="table-light">
+                                            <tr>
+                                                <th scope="col">Nama PO</th>
+                                                <th scope="col">No SPK</th>
+                                                <th scope="col">Tgl SPK</th>
+                                                <th scope="col">Nama Barang</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">....</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            </tbody>
+                         </table>
+                                          
                     </div>
                 </div>
             </div>

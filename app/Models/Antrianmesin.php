@@ -42,8 +42,8 @@ class Antrianmesin extends Model
 
     ];
 
-    public function antrianmesin()
+    public function proyekorder()
     {
-        return $this->belongsTo(Antrianmesin::class);
+        return $this->belongsTo(Proyekorder::class);
     }
 }
