@@ -36,13 +36,33 @@
                                                                     <th scope="col">...</th>
                                                                 </tr>
                                                                 </thead>
-                                                                <thead class="table-light">
-                                                                <tr>
-                                                                </tr>
-                                                                </thead>
                                                                 <tbody>
-                                                                
+                                                                    @forelse ($antrianmesin as $antri)
+                                                                        <tr>
+                                                                            <td class="">{{ $antri->proyekorder->namaproyek }}</td>
+                                                                            <td class="">{{ $antri->nospk }}</td>
+                                                                            <td class="">{{ $antri->tglspk }}</td>
+                                                                            <td class="">{{ $antri->namabarang }}</td>
+                                                                            <td class="">{{ $antri->qtybarang }}</td>
+
+                                                                            <td class="">{{ $antri->tglkhotpress }}</td>
+                                                                            <td class="">{{ $antri->tglkbasic }}</td>
+                                                                            <td class="">{{ $antri->tglkedging }}</td>
+                                                                            <td class="">{{ $antri->tglkcnc }}</td>
+                                                                            <td class="">{{ $antri->tglktukang }}</td>
+                                                                            <td class="">{{ $antri->tglkfinish }}</td>
+                                                                            
+                                                                            <td class="text-center">
+                                                                                
+                                                                            </td>
+                                                                        </tr>
+                                                                    @empty
+                                                                        <div class="alert alert-danger">
+                                                                            Data PO belum Tersedia.
+                                                                        </div>
+                                                                    @endforelse
                                                                 </tbody>
+                                                                
                                             </table>
                                                             
                                         </div>

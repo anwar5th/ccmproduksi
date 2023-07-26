@@ -9,6 +9,7 @@ class Antrianmesin extends Model
 {
     use HasFactory;
 
+    protected $table ='antrianmesins';
     protected $fillable = [
         'proyekorders_id',
         'nospk',
@@ -44,6 +45,6 @@ class Antrianmesin extends Model
 
     public function proyekorder()
     {
-        return $this->belongsTo(Proyekorder::class);
+        return $this->belongsTo(Proyekorder::class, 'proyekorders_id');
     }
 }

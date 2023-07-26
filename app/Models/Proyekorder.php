@@ -9,6 +9,7 @@ class Proyekorder extends Model
 {
     use HasFactory;
 
+    protected $table ='proyekorders';
     protected $fillable = [
         'kodepo',
         'namaproyek',
@@ -18,6 +19,6 @@ class Proyekorder extends Model
 
     public function antrianmesin()
     {
-        return $this->hasMany(Antrianmesin::class);
+        return $this->hasMany(Antrianmesin::class, 'proyekorders_id');
     }
 }
