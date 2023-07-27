@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     //route resource
     Route::resource('/proyekorders', \App\Http\Controllers\ProyekOrderController::class);
     Route::resource('/antrianmesin', \App\Http\Controllers\AntrianMesinController::class);
+    Route::resource('/listspk', \App\Http\Controllers\ListSpkController::class);
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

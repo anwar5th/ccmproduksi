@@ -15,7 +15,7 @@
                             <div class="max-w-full mx-auto ">
                                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                                     <div class="p-6 text-gray-900">
-                                        {{ __("List Antrian Mesin") }}
+                                        {{ __("List Barang SPK") }}
                                         <div class="container mt-5">
                                             <!-- Tambahan -->
                                             <table class="table" enctype="multipart/form-data">
@@ -26,38 +26,25 @@
                                                                     <th scope="col">Tgl SPK</th>
                                                                     <th scope="col">Nama Barang</th>
                                                                     <th scope="col">Qty</th>
-
-                                                                    <th scope="col">Hotpress</th>
-                                                                    <th scope="col">Basic</th>
-                                                                    <th scope="col">Edging</th>
-                                                                    <th scope="col">CNC</th>
-                                                                    <th scope="col">Tukang</th>
-                                                                    <th scope="col">Finishing</th>
                                                                     <th scope="col">...</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    @forelse ($antrianmesin as $antri)
+                                                                    @forelse ($listspk as $spk)
                                                                         <tr>
-                                                                            <td class="">{{ $antri->proyekorder->namaproyek }}</td>
-                                                                            <td class="">{{ $antri->nospk }}</td>
-                                                                            <td class="">{{ $antri->tglspk }}</td>
-                                                                            <td class="">{{ $antri->namabarang }}</td>
-                                                                            <td class="">{{ $antri->qtybarang }}</td>
+                                                                            <td class="">{{ $spk->proyekorder->namaproyek }}</td>
+                                                                            <td class="">{{ $spk->nospk }}</td>
+                                                                            <td class="">{{ $spk->tglspk }}</td>
+                                                                            <td class="">{{ $spk->namabarang }}</td>
+                                                                            <td class="">{{ $spk->qtybarang }}</td>
 
-                                                                            <td class="">{{ $antri->tglkhotpress }}</td>
-                                                                            <td class="">{{ $antri->tglkbasic }}</td>
-                                                                            <td class="">{{ $antri->tglkedging }}</td>
-                                                                            <td class="">{{ $antri->tglkcnc }}</td>
-                                                                            <td class="">{{ $antri->tglktukang }}</td>
-                                                                            <td class="">{{ $antri->tglkfinish }}</td>
-                                                                            
                                                                             <td class="text-center">
-                                                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $antri->id) }}" method="POST">
-                                                                                    <a href="{{ route('antrianmesin.show', $antri->id) }}" class="rounded-md btn bg-sky-800 hover:bg-sky-600 text-white">Detail</a><hr>
-                                                                                    
-                                                                                    <!-- <button type="submit" class="rounded-md btn bg-red-500 hover:bg-red-600 text-white">Hapus</button> -->
-                                                                                </form>  
+                                                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('listspk.destroy', $spk->id) }}" method="POST">
+                                                                                    <a href="{{ route('listspk.edit', $spk->id) }}" class="rounded-md btn bg-sky-500 hover:bg-sky-600 text-white">Ubah</a><hr>
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button type="submit" class="rounded-md btn bg-red-500 hover:bg-red-600 text-white">Hapus</button>
+                                                                                </form>
                                                                             </td>
                                                                         </tr>
                                                                     @empty

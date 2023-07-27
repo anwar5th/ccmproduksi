@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 //import Model "Antrianmesin"
 use App\Models\Antrianmesin;
 
+//import Model "Proyekorder
+use App\Models\Proyekorder;
+
 //return type View
 use Illuminate\View\View;
 
@@ -16,7 +19,7 @@ use Illuminate\Http\RedirectResponse;
 //import Facade "Storage"
 use Illuminate\Support\Facades\Storage;
 
-class AntrianMesinController extends Controller
+class ListSpkController extends Controller
 {
  /**
      * index
@@ -27,36 +30,39 @@ class AntrianMesinController extends Controller
     {
 
         //get posts
-        $antrianmesin = Antrianmesin::latest()->paginate(5);
+        $listspk = Antrianmesin::latest()->paginate(5);
 
         //render view with posts
-        return view('antrianmesin.index', compact('antrianmesin')); //text warna oranye "antrianmesin"(folder) didapat dari folder /resources/views/antrianmesin dan text index didapat dari file "index" berada di /resources/views/antrianmesin/index.blade.php
+        return view('listspk.index', compact('listspk')); //text warna oranye "antrianmesin"(folder) didapat dari folder /resources/views/antrianmesin dan text index didapat dari file "index" berada di /resources/views/antrianmesin/index.blade.php
         // compact adalah mengambil variabel $antrianmesin yg ada di atas
-    }   
-
-    // MEMBUAT CONTROLLER CREATE
-
-/**
-     * create
-     *
-     * @return View
-     */
-    public function create(): View
-    {
-
-        $proyekorders = Proyekorder::all();
-
-        return view('antrianmesin.create');
-    
     }
 
     /**
-     * store
+     * edit
+     *
+     * @param  mixed $id
+     * @return View
+     */
+    public function edit(string $id): View
+    {
+        //get post by ID
+        $listspk = Antrianmesin::findOrFail($id);
+
+        //get Proyekorder by ID
+        $proyekorders = Proyekorder::findOrFail($id);
+
+        //render view with post
+        return view('listspk.edit', compact('proyekorders' , 'listspk'));
+    }
+    
+    /**
+     * update
      *
      * @param  mixed $request
+     * @param  mixed $id
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function update(Request $request, $id): RedirectResponse
     {
         //validate form
         $this->validate($request, [
@@ -64,8 +70,10 @@ class AntrianMesinController extends Controller
             'namabarang'   => 'required|min:5'
         ]);
 
-        //create Antrianmesin
-        Antrianmesin::create([
+        //get antrianmesin by ID
+        $listspk = Antrianmesin::findOrFail($id);
+
+        $listspk->update([
             'proyekorders_id'     => $request->proyekorders_id,
             'nospk'     => $request->nospk,
             'tglspk'   => $request->tglspk,
@@ -98,23 +106,25 @@ class AntrianMesinController extends Controller
         ]);
 
         //redirect to index
-        return redirect()->route('listspk.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('listspk.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
-       /**
-     * show
+    /**
+     * destroy
      *
-     * @param  mixed $id
-     * @return View
+     * @param  mixed $post
+     * @return void
      */
-    public function show(string $id): View
+    public function destroy($id): RedirectResponse
     {
         //get post by ID
-        $antrianmesin = Antrianmesin::findOrFail($id);
+        $listspk = Antrianmesin::findOrFail($id);
 
-        //render view with post
-        return view('antrianmesin.show', compact('antrianmesin')); // compact adalah mengambil variabel $antrianmesin yg ada di atas
+        //delete post
+        $listspk->delete();
+
+        //redirect to index
+        return redirect()->route('listspk.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
-    
-}
 
+}

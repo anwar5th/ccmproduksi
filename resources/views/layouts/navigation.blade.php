@@ -27,7 +27,10 @@
                             
                         <x-slot name="content">
                             <x-dropdown-link :href="route('proyekorders.index')">
-                                {{ __('Produksi') }}
+                                {{ __('Input PO & SPK') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('listspk.index')">
+                                {{ __('List SPK') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('antrianmesin.index')">
                                 {{ __('Antrian Mechine') }}
