@@ -87,11 +87,8 @@ class ProyekOrderController extends Controller
         //get Proyekorder by ID
         $proyekorders = Proyekorder::findOrFail($id);
 
-        //get Antrianmesin by ID
-        $antrianmesin = Antrianmesin::findOrFail($id);
-
         //render view with Proyekorder
-        return view('proyekorders.show', compact('proyekorders' , 'antrianmesin'));
+        return view('proyekorders.show', compact('proyekorders'));
     }
 
         /**
