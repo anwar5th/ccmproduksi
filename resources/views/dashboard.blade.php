@@ -12,7 +12,13 @@
                     {{ __("Applikasi PT Citra Cikal Mapan") }}
                     <div class="container mt-5">
                         <!-- Tambahan -->
-                        
+                        <h3> - Input PO pada menu Produksi > Input PO & SPK > Agar Muncul Form Input SPK maka Input PO terlebih dahulu</h3>
+                        <br>
+                        <h3> - Input SPK terdapat pada tombol "Buat SPK" </h3> 
+                        <br>
+                        <h3> - Update Proses antrian mesin terdapat pada menu "List SPK" </h3>
+                        <br>
+                        <h3> - Detail laporan antrian mesin terdapat pada menu "Antrian Mesin" tombol "Detail" </h3>    
                     </div>
                 </div>
             </div>

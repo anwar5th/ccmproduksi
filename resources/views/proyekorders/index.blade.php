@@ -24,7 +24,7 @@
                                         <div class="col-12 col-sm-8 col-md-5">
                                         <form action="" method="GET">
                                             <div class="input-group mb-3">
-                                              <input name="keyword" class="form-control" placeholder="Search disini!" aria-label="Search disini!" aria-describedby="button-addon2" value="">
+                                              <input name="keyword" class="form-control" placeholder="Pencarian Berdasarkan Nama PO atau Kode PO, disini" aria-label="Pencarian Berdasarkan Nama PO atau Kode PO, disini" aria-describedby="button-addon2" value="">
                                             </div>
                                         </form>
                                         </div>
@@ -34,7 +34,7 @@
                                             <tr>
                                                 <th scope="col">Kode PO</th>
                                                 <th scope="col">Nama PO</th>
-                                                <th scope="col">Tgl PO</th>
+                                                <th scope="col">Tanggal PO</th>
                                                 <th scope="col">List Item SPK</th>
                                                 <th scope="col">....</th>
                                             </tr>

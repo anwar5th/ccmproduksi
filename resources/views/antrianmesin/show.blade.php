@@ -11,7 +11,13 @@
                 <div class="p-6 text-gray-900">
                     <div class="container mt-5">
                         <!-- Tambahan -->
-                        
+                         <div class="row justify-content-left">
+                                <div class="">
+                                    <span>Kode Proyek Order</span> | <span>{{ $antrianmesin->proyekorder->namaproyek }}</span><br>
+                                    <span>Nama Proyek Order</span> | <span>{{ $antrianmesin->nospk }}</span><br>
+                                    <span>Tgl Proyek Order</span> | <span>{{ $antrianmesin->tglspk }}</span>
+                                </div>
+                         </div>
                     </div>
                 </div>
             </div>

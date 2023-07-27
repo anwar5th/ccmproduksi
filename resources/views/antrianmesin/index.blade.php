@@ -16,6 +16,16 @@
                                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                                     <div class="p-6 text-gray-900">
                                         {{ __("List Antrian Mesin") }}
+                                        <!-- search -->
+                                        <div class="row justify-content-start">
+                                        <div class="col-12 col-sm-8 col-md-5">
+                                        <form action="" method="GET">
+                                            <div class="input-group mb-3">
+                                              <input name="keyword" class="form-control" placeholder="Pencarian Berdasarkan No SPK, disini" aria-label="Pencarian Berdasarkan No SPK, disini" aria-describedby="button-addon2" value="">
+                                            </div>
+                                        </form>
+                                        </div>
+                                        </div>
                                         <div class="container mt-5">
                                             <!-- Tambahan -->
                                             <table class="table" enctype="multipart/form-data">
@@ -23,7 +33,7 @@
                                                                 <tr>
                                                                     <th scope="col">Nama PO</th>
                                                                     <th scope="col">No SPK</th>
-                                                                    <th scope="col">Tgl SPK</th>
+                                                                    <th scope="col">Tanggal SPK</th>
                                                                     <th scope="col">Nama Barang</th>
                                                                     <th scope="col">Qty</th>
 
@@ -41,16 +51,16 @@
                                                                         <tr>
                                                                             <td class="">{{ $antri->proyekorder->namaproyek }}</td>
                                                                             <td class="">{{ $antri->nospk }}</td>
-                                                                            <td class="">{{ $antri->tglspk }}</td>
+                                                                            <td class="indent-0.5">{{ $antri->tglspk }}</td>
                                                                             <td class="">{{ $antri->namabarang }}</td>
                                                                             <td class="">{{ $antri->qtybarang }}</td>
 
-                                                                            <td class="">{{ $antri->tglkhotpress }}</td>
-                                                                            <td class="">{{ $antri->tglkbasic }}</td>
-                                                                            <td class="">{{ $antri->tglkedging }}</td>
-                                                                            <td class="">{{ $antri->tglkcnc }}</td>
-                                                                            <td class="">{{ $antri->tglktukang }}</td>
-                                                                            <td class="">{{ $antri->tglkfinish }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkhotpress }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkbasic }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkedging }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkcnc }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglktukang }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkfinish }}</td>
                                                                             
                                                                             <td class="text-center">
                                                                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $antri->id) }}" method="POST">
@@ -68,7 +78,7 @@
                                                                 </tbody>
                                                                 
                                             </table>
-                                                            
+                                            {{ $antrianmesin->links() }}                
                                         </div>
                                     </div>
                                 </div>

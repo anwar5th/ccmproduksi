@@ -19,7 +19,7 @@
 
                                     <div class="form-group">
                                         <label class="font-weight-bold">Kode PO</label>
-                                        <input type="text" class="form-control @error('kodepo') is-invalid @enderror" name="kodepo" value="{{ old('kodepo') }}" placeholder="">
+                                        <input type="text" class="form-control @error('kodepo') is-invalid @enderror" name="kodepo" value="{{ old('kodepo') }}" placeholder="" minlength="3">
                                     
                                         <!-- error message untuk kodepo -->
                                         @error('kodepo')
@@ -31,7 +31,7 @@
 
                                     <div class="form-group">
                                         <label class="font-weight-bold">Nama Proyek</label>
-                                        <input type="text" class="form-control @error('namaproyek') is-invalid @enderror" name="namaproyek" value="{{ old('namaproyek') }}" placeholder="">
+                                        <input type="text" class="form-control @error('namaproyek') is-invalid @enderror" name="namaproyek" value="{{ old('namaproyek') }}" placeholder="" minlength="5">
                                     
                                         <!-- error message untuk namaproyek -->
                                         @error('namaproyek')

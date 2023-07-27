@@ -35,7 +35,7 @@
                             <br>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text">No SPK</span>
-                                <input type="text" class="form-control @error('nospk') is-invalid @enderror" name="nospk" value="{{ old('nospk') }}" placeholder="">
+                                <input type="text" class="form-control @error('nospk') is-invalid @enderror" name="nospk" value="{{ old('nospk') }}" placeholder="" minlength="3">
                                 <!-- error message untuk kodepo -->
                                 @error('nospk')
                                             <div class="alert alert-danger mt-2">
@@ -57,7 +57,7 @@
                             <br>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text">Nama Barang</span>
-                                <input type="text" class="form-control @error('namabarang') is-invalid @enderror" name="namabarang" value="{{ old('namabarang') }}" placeholder="">
+                                <input type="text" class="form-control @error('namabarang') is-invalid @enderror" name="namabarang" value="{{ old('namabarang') }}" placeholder="" minlength="5">
                                 <!-- error message untuk kodepo -->
                                 @error('namabarang')
                                             <div class="alert alert-danger mt-2">
