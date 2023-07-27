@@ -29,57 +29,57 @@
                             @csrf
                             <p>HOT PRESS</p>
                             <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text">Tanggal Masuk</span>
-                                <span><p>{{ $antrianmesin->tglmhotpress }}</P></span>
-                                <span class="input-group-text">Tanggal Selesai</span>
-                                <span><p>{{ $antrianmesin->tglkhotpress }}</P></span>
-                                <span class="input-group-text">Keterangan</span>
-                                <span><p>{{ $antrianmesin->kethotpress }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Masuk</span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmhotpress }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Selesai</span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkhotpress }}</P></span>
+                                <span class="input-group-text bg-white">Keterangan</span>
+                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->kethotpress }}</P></span>
                             </div>
                             <p>R.SAW / BASIC</p>
                             <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text">Tanggal Masuk</span>
-                                <span><p>{{ $antrianmesin->tglmbasic }}</P></span>
-                                <span class="input-group-text">Tanggal Selesai</span>
-                                <span><p>{{ $antrianmesin->tglkbasic }}</P></span>
-                                <span class="input-group-text">Keterangan</span>
-                                <span><p>{{ $antrianmesin->ketbasic }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Masuk</span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmbasic }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Selesai</span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkbasic }}</P></span>
+                                <span class="input-group-text bg-white">Keterangan</span>
+                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketbasic }}</P></span>
                             </div>
                             <p>EDGING</p>
                             <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text">Tanggal Masuk</span>
-                                <span><p>{{ $antrianmesin->tglmedging }}</P></span>
-                                <span class="input-group-text">Tanggal Selesai</span>
-                                <span><p>{{ $antrianmesin->tglkedging }}</P></span>
-                                <span class="input-group-text">Keterangan</span>
-                                <span><p>{{ $antrianmesin->ketedging }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Masuk</span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmedging }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Selesai</span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkedging }}</P></span>
+                                <span class="input-group-text bg-white">Keterangan</span>
+                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketedging }}</P></span>
                             </div>
                             <p>CNC</p>
                             <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text">Tanggal Masuk</span>
-                                <span><p>{{ $antrianmesin->tglmcnc }}</P></span>
-                                <span class="input-group-text">Tanggal Selesai</span>
-                                <span><p>{{ $antrianmesin->tglkcnc }}</P></span>
-                                <span class="input-group-text">Keterangan</span>
-                                <span><p>{{ $antrianmesin->ketcnc }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Masuk</span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmcnc }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Selesai</span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkcnc }}</P></span>
+                                <span class="input-group-text bg-white">Keterangan</span>
+                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketcnc }}</P></span>
                             </div>
                             <p>TK. KAYU</p>
                             <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text">Tanggal Masuk</span>
-                                <span><p>{{ $antrianmesin->tglmtukang }}</P></span>
-                                <span class="input-group-text">Tanggal Selesai</span>
-                                <span><p>{{ $antrianmesin->tglktukang }}</P></span>
-                                <span class="input-group-text">Keterangan</span>
-                                <span><p>{{ $antrianmesin->kettukang }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Masuk</span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmtukang }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Selesai</span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglktukang }}</P></span>
+                                <span class="input-group-text bg-white">Keterangan</span>
+                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->kettukang }}</P></span>
                             </div>
                             <p>FINISHING</p>
                             <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text">Tanggal Masuk</span>
-                                <span><p>{{ $antrianmesin->tglmfinish }}</P></span>
-                                <span class="input-group-text">Tanggal Selesai</span>
-                                <span><p>{{ $antrianmesin->tglkfinish }}</P></span>
-                                <span class="input-group-text">Keterangan</span>
-                                <span><p>{{ $antrianmesin->ketfinish }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Masuk</span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmfinish }}</P></span>
+                                <span class="input-group-text bg-white">Tanggal Selesai</span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkfinish }}</P></span>
+                                <span class="input-group-text bg-white">Keterangan</span>
+                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketfinish }}</P></span>
                             </div>
                             </form>
                     </div>
