@@ -26,11 +26,13 @@ class ListSpkController extends Controller
      *
      * @return View
      */
-    public function index(): View
+    public function index(Request $request): View
     {
 
+        //get search
+        $keyword = $request->keyword;
         //get posts
-        $listspk = Antrianmesin::latest()->paginate(5);
+        $listspk = Antrianmesin::where('nospk', 'LIKE', '%'.$keyword.'%')->latest()->paginate(5);
 
         //render view with posts
         return view('listspk.index', compact('listspk')); //text warna oranye "antrianmesin"(folder) didapat dari folder /resources/views/antrianmesin dan text index didapat dari file "index" berada di /resources/views/antrianmesin/index.blade.php
