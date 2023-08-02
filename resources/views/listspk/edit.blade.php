@@ -29,8 +29,8 @@
                             @method('PUT')
 
                             <label for="personSelect">ID PO
-                                <select name="proyekorders_id" lass="form-control @error('proyekorders_id') is-invalid @enderror" name="proyekorders_id" value="{{ $proyekorders->id }}" placeholder="" >
-                                  <option>{{ $proyekorders->id }}</option>
+                                <select name="proyekorders_id" lass="form-control @error('proyekorders_id') is-invalid @enderror" name="proyekorders_id" value="{{ old('proyekorders_id', $listspk->proyekorders_id) }}" placeholder="" >
+                                  <option>{{ $listspk->proyekorders_id }}</option>
                                 </select>
                             </label>
                             <br>

@@ -72,6 +72,9 @@ class ListSpkController extends Controller
             'namabarang'   => 'required|min:5'
         ]);
 
+        //get proyekorder by ID
+        $proyekorders = Proyekorder::findOrFail($id);
+
         //get antrianmesin by ID
         $listspk = Antrianmesin::findOrFail($id);
 
