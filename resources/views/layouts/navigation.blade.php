@@ -18,7 +18,7 @@
                     <x-dropdown align="left" width="48">
                         <x-slot name="trigger">
                             <x-nav-link>
-                                {{ __('Produksi') }}
+                                {{ __('Office L2') }}
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                     </svg>
@@ -29,12 +29,43 @@
                             <x-dropdown-link :href="route('proyekorders.index')">
                                 {{ __('Input PO & SPK') }}
                             </x-dropdown-link>
+                            
+                        </x-slot>
+                    </x-dropdown>
+                    <!-- nav menu 2 -->
+                    <x-dropdown align="left" width="48">
+                        <x-slot name="trigger">
+                            <x-nav-link>
+                                {{ __('Produksi WS1') }}
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                            </x-nav-link>
+                        </x-slot>
+                            
+                        <x-slot name="content">
+                            
                             <x-dropdown-link :href="route('listspk.index')">
                                 {{ __('List SPK') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('antrianmesin.index')">
                                 {{ __('Antrian Mechine') }}
                             </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
+                    <!-- nav menu 3 -->
+                    <x-dropdown align="left" width="48">
+                        <x-slot name="trigger">
+                            <x-nav-link>
+                                {{ __('Produksi WS2') }}
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                            </x-nav-link>
+                        </x-slot>
+                            
+                        <x-slot name="content">
+                            
                         </x-slot>
                     </x-dropdown>
                 </div>

@@ -55,12 +55,12 @@
                                                                             <td class="">{{ $antri->namabarang }}</td>
                                                                             <td class="">{{ $antri->qtybarang }}</td>
 
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkhotpress }}</td>
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkbasic }}</td>
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkedging }}</td>
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkcnc }}</td>
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglktukang }}</td>
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkfinish }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkhotpress?'Selesai':'' }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkbasic?'Selesai':'' }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkedging?'Selesai':'' }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkcnc?'Selesai':'' }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglktukang?'Selesai':'' }}</td>
+                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkfinish?'Selesai':'' }}</td>
                                                                             
                                                                             <td class="text-center">
                                                                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $antri->id) }}" method="POST">
