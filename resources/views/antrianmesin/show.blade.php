@@ -13,11 +13,12 @@
                         <!-- Tambahan -->
                          <div class="row justify-content-left">
                                 <div class="">
-                                    <span>Nama Proyek</span> | <span>{{ $antrianmesin->proyekorder->namaproyek }}</span><br><br>
-                                    <span>Nomor SPK</span> | <span>{{ $antrianmesin->nospk }}</span><br><br>
-                                    <span>Tanggal Turun SPK</span> | <span>{{ $antrianmesin->tglspk }}</span><br><br>
-                                    <span>Nama Barang</span> | <span>{{ $antrianmesin->namabarang }}</span><br><br>
-                                    <span>Quantity</span> | <span>{{ $antrianmesin->qtybarang }}</span>
+                                    <span><strong>Nama Proyek:</strong></span> <span>{{ $antrianmesin->proyekorder->namaproyek }}</span><br><br>
+                                    <span><strong>Nomor SPK:</strong></span> <span>{{ $antrianmesin->nospk }}</span><br><br>
+                                    <span><strong>Tanggal Turun SPK:</strong></span>
+                                    <span>{{ $antrianmesin->tglspk ? \Carbon\Carbon::parse($antrianmesin->tglspk)->format('d M Y H.i') : '' }}</span><br><br>
+                                    <span><strong>Nama Barang:</strong></span> <span>{{ $antrianmesin->namabarang }}</span><br><br>
+                                    <span><strong>Quantity:</strong></span> <span>{{ $antrianmesin->qtybarang }}</span>
                                 </div>
                          </div>
                          <br>
@@ -30,54 +31,54 @@
                             <p>HOT PRESS</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmhotpress }}</P></span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmhotpress ? \Carbon\Carbon::parse($antrianmesin->tglmhotpress)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkhotpress }}</P></span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkhotpress ? \Carbon\Carbon::parse($antrianmesin->tglkhotpress)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Keterangan</span>
                                 <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->kethotpress }}</P></span>
                             </div>
                             <p>R.SAW / BASIC</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmbasic }}</P></span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmbasic ? \Carbon\Carbon::parse($antrianmesin->tglmbasic)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkbasic }}</P></span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkbasic ? \Carbon\Carbon::parse($antrianmesin->tglkbasic)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Keterangan</span>
                                 <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketbasic }}</P></span>
                             </div>
                             <p>EDGING</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmedging }}</P></span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmedging ? \Carbon\Carbon::parse($antrianmesin->tglmedging)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkedging }}</P></span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkedging ? \Carbon\Carbon::parse($antrianmesin->tglkedging)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Keterangan</span>
                                 <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketedging }}</P></span>
                             </div>
                             <p>CNC</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmcnc }}</P></span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmcnc ? \Carbon\Carbon::parse($antrianmesin->tglmcnc)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkcnc }}</P></span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkcnc ? \Carbon\Carbon::parse($antrianmesin->tglkcnc)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Keterangan</span>
                                 <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketcnc }}</P></span>
                             </div>
                             <p>TK. KAYU</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmtukang }}</P></span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmtukang ? \Carbon\Carbon::parse($antrianmesin->tglmtukang)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglktukang }}</P></span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglktukang ? \Carbon\Carbon::parse($antrianmesin->tglktukang)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Keterangan</span>
                                 <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->kettukang }}</P></span>
                             </div>
                             <p>FINISHING</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmfinish }}</P></span>
+                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmfinish ? \Carbon\Carbon::parse($antrianmesin->tglmfinish)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkfinish }}</P></span>
+                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkfinish ? \Carbon\Carbon::parse($antrianmesin->tglkfinish)->format('d M Y H.i') : '' }}</P></span>
                                 <span class="input-group-text bg-white">Keterangan</span>
                                 <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketfinish }}</P></span>
                             </div>

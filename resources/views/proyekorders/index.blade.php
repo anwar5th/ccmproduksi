@@ -36,7 +36,7 @@
                                                 <th scope="col">Nama PO</th>
                                                 <th scope="col">Tanggal PO</th>
                                                 <th scope="col">List Item SPK</th>
-                                                <th scope="col">....</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -44,12 +44,12 @@
                                                     <tr>
                                                         <td class="">{{ $po->kodepo }}</td>
                                                         <td class="">{{ $po->namaproyek }}</td>
-                                                        <td class="">{{ $po->tglpo }}</td>
+                                                        <td class="">{{ $po->tglpo ? \Carbon\Carbon::parse($po->tglpo)->format('d M Y H.i') : '' }}</td>
                                                         <td class="break-all">{!! $po->keteranganpoitem !!}</td>
                                                         <td class="text-center">
                                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $po->id) }}" method="POST">
-                                                                <a href="{{ route('proyekorders.show', $po->id) }}" class="rounded-md btn bg-sky-800 hover:bg-sky-600 text-white">Buat SPK</a><hr>
-                                                                <a href="{{ route('proyekorders.edit', $po->id) }}" class="rounded-md btn bg-sky-500 hover:bg-sky-600 text-white">Ubah</a><hr>
+                                                                <a href="{{ route('proyekorders.show', $po->id) }}" class="rounded-md btn bg-sky-800 hover:bg-sky-600 text-white">Buat SPK</a>
+                                                                <a href="{{ route('proyekorders.edit', $po->id) }}" class="rounded-md btn bg-sky-500 hover:bg-sky-600 text-white">Ubah</a>
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <!-- <button type="submit" class="rounded-md btn bg-red-500 hover:bg-red-600 text-white">Hapus</button> -->

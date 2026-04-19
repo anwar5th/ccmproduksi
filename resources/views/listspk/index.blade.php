@@ -36,7 +36,7 @@
                                                                     <th scope="col">Tanggal SPK</th>
                                                                     <th scope="col">Nama Barang</th>
                                                                     <th scope="col">Qty</th>
-                                                                    <th scope="col">...</th>
+                                                                    <th scope="col">Aksi</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -44,16 +44,16 @@
                                                                         <tr>
                                                                             <td class="">{{ $spk->proyekorder->namaproyek }}</td>
                                                                             <td class="">{{ $spk->nospk }}</td>
-                                                                            <td class="">{{ $spk->tglspk }}</td>
+                                                                            <td class="">{{ $spk->tglspk ? \Carbon\Carbon::parse($spk->tglspk)->format('d M Y H.i') : '' }}</td>
                                                                             <td class="">{{ $spk->namabarang }}</td>
                                                                             <td class="">{{ $spk->qtybarang }}</td>
 
                                                                             <td class="text-center">
                                                                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('listspk.destroy', $spk->id) }}" method="POST">
-                                                                                    <a href="{{ route('listspk.edit', $spk->id) }}" class="rounded-md btn bg-sky-500 hover:bg-sky-600 text-white">Update</a><hr>
+                                                                                    <a href="{{ route('listspk.edit', $spk->id) }}" class="rounded-md btn bg-sky-500 hover:bg-sky-600 text-white">Update</a>
                                                                                     @csrf
                                                                                     @method('DELETE')
-                                                                                    <button type="submit" class="rounded-md btn bg-red-500 hover:bg-red-600 text-white">Hapus</button>
+                                                                                    <!-- <button type="submit" class="rounded-md btn bg-red-500 hover:bg-red-600 text-white">Hapus</button> -->
                                                                                 </form>
                                                                             </td>
                                                                         </tr>

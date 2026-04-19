@@ -43,7 +43,7 @@
 
                                     <div class="form-group">
                                         <label class="font-weight-bold">Tgl PO</label>
-                                        <input type="date" class="form-control @error('tglpo') is-invalid @enderror" name="tglpo" value="{{ old('tglpo') }}" placeholder="">
+                                        <input type="datetime-local" class="form-control @error('tglpo') is-invalid @enderror" name="tglpo" value="{{ old('tglpo') ? \Carbon\Carbon::parse(old('tglpo'))->format('Y-m-d\TH:i') : '' }}" placeholder="">
                                     
                                         <!-- error message untuk tglpo -->
                                         @error('tglpo')

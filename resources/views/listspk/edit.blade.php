@@ -14,9 +14,9 @@
                         <div class="container mt-5 mb-5">
                             <div class="row justify-content-left">
                                 <div class="">
-                                    <span>Kode Proyek Order</span> | <span>{{ $proyekorders->kodepo }}</span><br>
-                                    <span>Nama Proyek Order</span> | <span>{{ $proyekorders->namaproyek }}</span><br>
-                                    <span>Tgl Proyek Order</span> | <span>{{ $proyekorders->tglpo }}</span>
+                                    <span><strong>Kode Proyek Order:</strong></span> <span>{{ $proyekorders->kodepo }}</span><br>
+                                    <span><strong>Nama Proyek Order:</strong></span> <span>{{ $proyekorders->namaproyek }}</span><br>
+                                    <span><strong>Tgl Proyek Order:</strong></span> <span>{{ $proyekorders->tglpo ? \Carbon\Carbon::parse($proyekorders->tglpo)->format('d M Y H.i') : '' }}</span>
                                 </div>
                             </div>
                             <br>
@@ -47,7 +47,7 @@
                             <br>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text">Tgl SPK</span>
-                                <input type="date" class="form-control @error('tglspk') is-invalid @enderror" name="tglspk" value="{{ old('tglspk', $listspk->tglspk) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglspk') is-invalid @enderror" name="tglspk" value="{{ old('tglspk') ? \Carbon\Carbon::parse(old('tglspk'))->format('Y-m-d\\TH:i') : ($listspk->tglspk ? \Carbon\Carbon::parse($listspk->tglspk)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <!-- error message untuk kodepo -->
                                 @error('tglspk')
                                             <div class="alert alert-danger mt-2">
@@ -81,54 +81,54 @@
                             <p>HOT PRESS</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text">Tgl Masuk</span>
-                                <input type="date" class="form-control @error('tglmhotpress') is-invalid @enderror" name="tglmhotpress" value="{{ old('tglmhotpress', $listspk->tglmhotpress) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglmhotpress') is-invalid @enderror" name="tglmhotpress" value="{{ old('tglmhotpress') ? \Carbon\Carbon::parse(old('tglmhotpress'))->format('Y-m-d\\TH:i') : ($listspk->tglmhotpress ? \Carbon\Carbon::parse($listspk->tglmhotpress)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Tgl Keluar</span>
-                                <input type="date" class="form-control @error('tglkhotpress') is-invalid @enderror" name="tglkhotpress" value="{{ old('tglkhotpress', $listspk->tglkhotpress) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglkhotpress') is-invalid @enderror" name="tglkhotpress" value="{{ old('tglkhotpress') ? \Carbon\Carbon::parse(old('tglkhotpress'))->format('Y-m-d\\TH:i') : ($listspk->tglkhotpress ? \Carbon\Carbon::parse($listspk->tglkhotpress)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Keterangan</span>
                                 <input type="text" class="form-control @error('kethotpress') is-invalid @enderror" name="kethotpress" value="{{ old('kethotpress', $listspk->kethotpress) }}" placeholder="">
                             </div>
                             <p>R.SAW / BASIC</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text">Tgl Masuk</span>
-                                <input type="date" class="form-control @error('tglmbasic') is-invalid @enderror" name="tglmbasic" value="{{ old('tglmbasic', $listspk->tglmbasic) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglmbasic') is-invalid @enderror" name="tglmbasic" value="{{ old('tglmbasic') ? \Carbon\Carbon::parse(old('tglmbasic'))->format('Y-m-d\\TH:i') : ($listspk->tglmbasic ? \Carbon\Carbon::parse($listspk->tglmbasic)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Tgl Keluar</span>
-                                <input type="date" class="form-control @error('tglkbasic') is-invalid @enderror" name="tglkbasic" value="{{ old('tglkbasic', $listspk->tglkbasic) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglkbasic') is-invalid @enderror" name="tglkbasic" value="{{ old('tglkbasic') ? \Carbon\Carbon::parse(old('tglkbasic'))->format('Y-m-d\\TH:i') : ($listspk->tglkbasic ? \Carbon\Carbon::parse($listspk->tglkbasic)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Keterangan</span>
                                 <input type="text" class="form-control @error('ketbasic') is-invalid @enderror" name="ketbasic" value="{{ old('ketbasic', $listspk->ketbasic) }}" placeholder="">
                             </div>
                             <p>EDGING</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text">Tgl Masuk</span>
-                                <input type="date" class="form-control @error('tglmedging') is-invalid @enderror" name="tglmedging" value="{{ old('tglmedging', $listspk->tglmedging) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglmedging') is-invalid @enderror" name="tglmedging" value="{{ old('tglmedging') ? \Carbon\Carbon::parse(old('tglmedging'))->format('Y-m-d\\TH:i') : ($listspk->tglmedging ? \Carbon\Carbon::parse($listspk->tglmedging)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Tgl Keluar</span>
-                                <input type="date" class="form-control @error('tglkedging') is-invalid @enderror" name="tglkedging" value="{{ old('tglkedging', $listspk->tglkedging) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglkedging') is-invalid @enderror" name="tglkedging" value="{{ old('tglkedging') ? \Carbon\Carbon::parse(old('tglkedging'))->format('Y-m-d\\TH:i') : ($listspk->tglkedging ? \Carbon\Carbon::parse($listspk->tglkedging)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Keterangan</span>
                                 <input type="text" class="form-control @error('ketedging') is-invalid @enderror" name="ketedging" value="{{ old('ketedging', $listspk->ketedging) }}" placeholder="">
                             </div>
                             <p>CNC</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text">Tgl Masuk</span>
-                                <input type="date" class="form-control @error('tglmcnc') is-invalid @enderror" name="tglmcnc" value="{{ old('tglmcnc', $listspk->tglmcnc) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglmcnc') is-invalid @enderror" name="tglmcnc" value="{{ old('tglmcnc') ? \Carbon\Carbon::parse(old('tglmcnc'))->format('Y-m-d\\TH:i') : ($listspk->tglmcnc ? \Carbon\Carbon::parse($listspk->tglmcnc)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Tgl Keluar</span>
-                                <input type="date" class="form-control @error('tglkcnc') is-invalid @enderror" name="tglkcnc" value="{{ old('tglkcnc', $listspk->tglkcnc) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglkcnc') is-invalid @enderror" name="tglkcnc" value="{{ old('tglkcnc') ? \Carbon\Carbon::parse(old('tglkcnc'))->format('Y-m-d\\TH:i') : ($listspk->tglkcnc ? \Carbon\Carbon::parse($listspk->tglkcnc)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Keterangan</span>
                                 <input type="text" class="form-control @error('ketcnc') is-invalid @enderror" name="ketcnc" value="{{ old('ketcnc', $listspk->ketcnc) }}" placeholder="">
                             </div>
                             <p>TK. KAYU</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text">Tgl Masuk</span>
-                                <input type="date" class="form-control @error('tglmtukang') is-invalid @enderror" name="tglmtukang" value="{{ old('tglmtukang', $listspk->tglmtukang) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglmtukang') is-invalid @enderror" name="tglmtukang" value="{{ old('tglmtukang') ? \Carbon\Carbon::parse(old('tglmtukang'))->format('Y-m-d\\TH:i') : ($listspk->tglmtukang ? \Carbon\Carbon::parse($listspk->tglmtukang)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Tgl Keluar</span>
-                                <input type="date" class="form-control @error('tglktukang') is-invalid @enderror" name="tglktukang" value="{{ old('tglktukang', $listspk->tglktukang) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglktukang') is-invalid @enderror" name="tglktukang" value="{{ old('tglktukang') ? \Carbon\Carbon::parse(old('tglktukang'))->format('Y-m-d\\TH:i') : ($listspk->tglktukang ? \Carbon\Carbon::parse($listspk->tglktukang)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Keterangan</span>
                                 <input type="text" class="form-control @error('kettukang') is-invalid @enderror" name="kettukang" value="{{ old('kettukang', $listspk->kettukang) }}" placeholder="">
                             </div>
                             <p>FINISHING</p>
                             <div class="row justify-content-left input-group mb-3">
                                 <span class="input-group-text">Tgl Masuk</span>
-                                <input type="date" class="form-control @error('tglmfinish') is-invalid @enderror" name="tglmfinish" value="{{ old('tglmfinish', $listspk->tglmfinish) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglmfinish') is-invalid @enderror" name="tglmfinish" value="{{ old('tglmfinish') ? \Carbon\Carbon::parse(old('tglmfinish'))->format('Y-m-d\\TH:i') : ($listspk->tglmfinish ? \Carbon\Carbon::parse($listspk->tglmfinish)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Tgl Keluar</span>
-                                <input type="date" class="form-control @error('tglkfinish') is-invalid @enderror" name="tglkfinish" value="{{ old('tglkfinish', $listspk->tglkfinish) }}" placeholder="">
+                                <input type="datetime-local" class="form-control @error('tglkfinish') is-invalid @enderror" name="tglkfinish" value="{{ old('tglkfinish') ? \Carbon\Carbon::parse(old('tglkfinish'))->format('Y-m-d\\TH:i') : ($listspk->tglkfinish ? \Carbon\Carbon::parse($listspk->tglkfinish)->format('Y-m-d\\TH:i') : '') }}" placeholder="">
                                 <span class="input-group-text">Keterangan</span>
                                 <input type="text" class="form-control @error('ketfinish') is-invalid @enderror" name="ketfinish" value="{{ old('ketfinish', $listspk->ketfinish) }}" placeholder="">
                             </div>

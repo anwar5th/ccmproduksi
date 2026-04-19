@@ -43,7 +43,7 @@
                                                                     <th scope="col">CNC</th>
                                                                     <th scope="col">Tukang</th>
                                                                     <th scope="col">Finishing</th>
-                                                                    <th scope="col">...</th>
+                                                                    <th scope="col">Aksi</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -51,17 +51,77 @@
                                                                         <tr>
                                                                             <td class="">{{ $antri->proyekorder->namaproyek }}</td>
                                                                             <td class="">{{ $antri->nospk }}</td>
-                                                                            <td class="indent-0.5">{{ $antri->tglspk }}</td>
+                                                                            <td class="indent-0.5">{{ $antri->tglspk ? \Carbon\Carbon::parse($antri->tglspk)->format('d M Y H.i') : '' }}</td>
                                                                             <td class="">{{ $antri->namabarang }}</td>
                                                                             <td class="">{{ $antri->qtybarang }}</td>
 
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkhotpress?'Selesai':'' }}</td>
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkbasic?'Selesai':'' }}</td>
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkedging?'Selesai':'' }}</td>
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkcnc?'Selesai':'' }}</td>
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglktukang?'Selesai':'' }}</td>
-                                                                            <td class="text-green-600/100 indent-0.5">{{ $antri->tglkfinish?'Selesai':'' }}</td>
-                                                                            
+                                                                            <td class="indent-0.5">
+                                                                                <?php 
+                                                                                    if (!$antri->tglkhotpress && !$antri->tglmhotpress) {
+                                                                                        echo '';
+                                                                                    } else if ($antri->tglkhotpress){
+                                                                                        echo '<span class="text-green-600/100">Selesai</span>';
+                                                                                    } else if ($antri->tglmhotpress){
+                                                                                        echo '<span class="text-orange-300">Proses</span>';
+                                                                                    }
+                                                                                ?>
+                                                                            </td>
+                                                                            <td class="indent-0.5">
+                                                                                <?php 
+                                                                                    if (!$antri->tglkbasic && !$antri->tglmbasic) {
+                                                                                        echo '';
+                                                                                    } else if ($antri->tglkbasic){
+                                                                                        echo '<span class="text-green-600/100">Selesai</span>';
+                                                                                    } else if ($antri->tglmbasic){
+                                                                                        echo '<span class="text-orange-300">Proses</span>';
+                                                                                    }
+                                                                                ?>
+                                                                            </td>
+                                                                            <td class="indent-0.5">
+                                                                                <?php 
+                                                                                    if (!$antri->tglkedging && !$antri->tgmkedging) {
+                                                                                        echo '';
+                                                                                    } else if ($antri->tglkedging){
+                                                                                        echo '<span class="text-green-600/100">Selesai</span>';
+                                                                                    } else if ($antri->tgmkedging){
+                                                                                        echo '<span class="text-orange-300">Proses</span>';
+                                                                                    }
+                                                                                ?>
+                                                                            </td>
+                                                                            <td class="indent-0.5">
+                                                                                <?php 
+                                                                                    if (!$antri->tglkcnc && !$antri->tglmCnc) {
+                                                                                        echo '';
+                                                                                    } else if ($antri->tglkcnc){
+                                                                                        echo '<span class="text-green-600/100">Selesai</span>';
+                                                                                    } else if ($antri->tglmCnc){
+                                                                                        echo '<span class="text-orange-300">Proses</span>';
+                                                                                    }
+                                                                                ?>
+                                                                            </td>
+                                                                            <td class="indent-0.5">
+                                                                                <?php 
+                                                                                    if (!$antri->tglktukang && !$antri->tglmTukang) {
+                                                                                        echo '';
+                                                                                    } else if ($antri->tglktukang){
+                                                                                        echo '<span class="text-green-600/100">Selesai</span>';
+                                                                                    } else if ($antri->tglmTukang){
+                                                                                        echo '<span class="text-orange-300">Proses</span>';
+                                                                                    }
+                                                                                ?>
+                                                                            </td>
+                                                                            <td class="indent-0.5">
+                                                                                <?php 
+                                                                                    if (!$antri->tglkfinish && !$antri->tglmFinish) {
+                                                                                        echo '';
+                                                                                    } else if ($antri->tglkfinish){
+                                                                                        echo '<span class="text-green-600/100">Selesai</span>';
+                                                                                    } else if ($antri->tglmFinish){
+                                                                                        echo '<span class="text-orange-300">Proses</span>';
+                                                                                    }
+                                                                                ?>
+                                                                            </td>
+
                                                                             <td class="text-center">
                                                                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $antri->id) }}" method="POST">
                                                                                     <a href="{{ route('antrianmesin.show', $antri->id) }}" class="rounded-md btn bg-sky-800 hover:bg-sky-600 text-white">Detail</a><hr>
