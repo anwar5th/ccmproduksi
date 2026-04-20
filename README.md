@@ -1,3 +1,21 @@
+# How To Install
+```
+composer install --no-interaction --prefer-dist
+php artisan key:generate
+php artisan migrate --seed
+```
+
+# How To Run
+```
+npm install
+# untuk development (hot reload)
+npm run dev
+# atau untuk production build
+npm run build
+
+php artisan serve --host=127.0.0.1 --port=8000
+```
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
