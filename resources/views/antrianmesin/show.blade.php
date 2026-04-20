@@ -1,92 +1,119 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Produksi WS1') }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <h2 class="font-semibold text-2xl text-slate-900 leading-tight">
+                {{ __('Detail Antrian Mesin') }}
+            </h2>
+            <a href="{{ route('antrianmesin.index') }}" class="inline-flex items-center px-4 py-2 bg-slate-200 border border-transparent rounded-lg font-semibold text-xs text-slate-700 uppercase tracking-widest hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                Kembali
+            </a>
+        </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <div class="container mt-5">
-                        <!-- Tambahan -->
-                         <div class="row justify-content-left">
-                                <div class="">
-                                    <span><strong>Nama Proyek:</strong></span> <span>{{ $antrianmesin->proyekorder->namaproyek }}</span><br><br>
-                                    <span><strong>Nomor SPK:</strong></span> <span>{{ $antrianmesin->nospk }}</span><br><br>
-                                    <span><strong>Tanggal Turun SPK:</strong></span>
-                                    <span>{{ $antrianmesin->tglspk ? \Carbon\Carbon::parse($antrianmesin->tglspk)->format('d M Y H.i') : '' }}</span><br><br>
-                                    <span><strong>Nama Barang:</strong></span> <span>{{ $antrianmesin->namabarang }}</span><br><br>
-                                    <span><strong>Quantity:</strong></span> <span>{{ $antrianmesin->qtybarang }}</span>
-                                </div>
-                         </div>
-                         <br>
-                            <br>
-                            <b><h4>Laporan Antrian Mesin</h4></b>
-                            <br>
-                            <form>
-                            
-                            @csrf
-                            <p>HOT PRESS</p>
-                            <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmhotpress ? \Carbon\Carbon::parse($antrianmesin->tglmhotpress)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkhotpress ? \Carbon\Carbon::parse($antrianmesin->tglkhotpress)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Keterangan</span>
-                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->kethotpress }}</P></span>
-                            </div>
-                            <p>R.SAW / BASIC</p>
-                            <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmbasic ? \Carbon\Carbon::parse($antrianmesin->tglmbasic)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkbasic ? \Carbon\Carbon::parse($antrianmesin->tglkbasic)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Keterangan</span>
-                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketbasic }}</P></span>
-                            </div>
-                            <p>EDGING</p>
-                            <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmedging ? \Carbon\Carbon::parse($antrianmesin->tglmedging)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkedging ? \Carbon\Carbon::parse($antrianmesin->tglkedging)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Keterangan</span>
-                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketedging }}</P></span>
-                            </div>
-                            <p>CNC</p>
-                            <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmcnc ? \Carbon\Carbon::parse($antrianmesin->tglmcnc)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkcnc ? \Carbon\Carbon::parse($antrianmesin->tglkcnc)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Keterangan</span>
-                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketcnc }}</P></span>
-                            </div>
-                            <p>TK. KAYU</p>
-                            <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmtukang ? \Carbon\Carbon::parse($antrianmesin->tglmtukang)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglktukang ? \Carbon\Carbon::parse($antrianmesin->tglktukang)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Keterangan</span>
-                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->kettukang }}</P></span>
-                            </div>
-                            <p>FINISHING</p>
-                            <div class="row justify-content-left input-group mb-3">
-                                <span class="input-group-text bg-white">Tanggal Masuk</span>
-                                <span class="input-group-text bg-orange-300"><p>{{ $antrianmesin->tglmfinish ? \Carbon\Carbon::parse($antrianmesin->tglmfinish)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Tanggal Selesai</span>
-                                <span class="input-group-text bg-green-300"><p>{{ $antrianmesin->tglkfinish ? \Carbon\Carbon::parse($antrianmesin->tglkfinish)->format('d M Y H.i') : '' }}</P></span>
-                                <span class="input-group-text bg-white">Keterangan</span>
-                                <span class="input-group-text bg-yellow-100"><p>{{ $antrianmesin->ketfinish }}</P></span>
-                            </div>
-                            </form>
+    <div class="py-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            
+            <!-- Summary Card -->
+            <div class="bg-white shadow-sm rounded-xl border border-slate-200 overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+                    <h3 class="text-lg font-bold text-slate-900">Informasi SPK & Proyek</h3>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $antrianmesin->qtybarang <= 10 ? 'bg-amber-100 text-amber-700' : 'bg-emerald-100 text-emerald-700' }}">
+                        Qty: {{ $antrianmesin->qtybarang }}
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div>
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Nama Proyek</p>
+                            <p class="text-sm font-bold text-slate-900">{{ $antrianmesin->proyekorder->namaproyek ?? '-' }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Nomor SPK</p>
+                            <p class="text-sm font-bold text-slate-900">{{ $antrianmesin->nospk }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Tanggal Turun SPK</p>
+                            <p class="text-sm font-semibold text-slate-700">{{ $antrianmesin->tglspk ? \Carbon\Carbon::parse($antrianmesin->tglspk)->format('d M Y H.i') : '-' }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Nama Barang</p>
+                            <p class="text-sm font-bold text-slate-900">{{ $antrianmesin->namabarang }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Machine Queue Status -->
+            <div class="bg-white shadow-sm rounded-xl border border-slate-200 overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-200 bg-slate-50">
+                    <h3 class="text-lg font-bold text-slate-900">Laporan Antrian Mesin</h3>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        
+                        @php
+                            $machines = [
+                                ['id' => 'hotpress', 'name' => 'Hot Press'],
+                                ['id' => 'basic', 'name' => 'R.Saw / Basic'],
+                                ['id' => 'edging', 'name' => 'Edging'],
+                                ['id' => 'cnc', 'name' => 'CNC'],
+                                ['id' => 'tukang', 'name' => 'Tk. Kayu'],
+                                ['id' => 'finish', 'name' => 'Finishing'],
+                            ];
+                        @endphp
+
+                        @foreach($machines as $machine)
+                            <div class="bg-white border border-slate-200 rounded-lg overflow-hidden flex flex-col md:flex-row">
+                                <!-- Machine Name (Left) -->
+                                <div class="bg-slate-100 px-6 py-4 md:w-48 flex items-center border-b md:border-b-0 md:border-r border-slate-200">
+                                    <span class="font-bold text-slate-800">{{ $machine['name'] }}</span>
+                                </div>
+                                
+                                <!-- Status Content (Right) -->
+                                <div class="flex-1 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                                    
+                                    <!-- Tanggal Masuk -->
+                                    <div class="px-4 py-3 bg-white">
+                                        <p class="text-xs font-semibold text-slate-500 mb-1">Tanggal Masuk</p>
+                                        @if($antrianmesin->{'tglm'.$machine['id']})
+                                            <p class="text-sm font-medium text-amber-700 bg-amber-50 inline-block px-2 py-0.5 rounded border border-amber-200">
+                                                {{ \Carbon\Carbon::parse($antrianmesin->{'tglm'.$machine['id']})->format('d M Y H.i') }}
+                                            </p>
+                                        @else
+                                            <p class="text-sm text-slate-400">-</p>
+                                        @endif
+                                    </div>
+                                    
+                                    <!-- Tanggal Keluar -->
+                                    <div class="px-4 py-3 bg-white">
+                                        <p class="text-xs font-semibold text-slate-500 mb-1">Tanggal Selesai</p>
+                                        @if($antrianmesin->{'tglk'.$machine['id']})
+                                            <p class="text-sm font-medium text-emerald-700 bg-emerald-50 inline-block px-2 py-0.5 rounded border border-emerald-200">
+                                                {{ \Carbon\Carbon::parse($antrianmesin->{'tglk'.$machine['id']})->format('d M Y H.i') }}
+                                            </p>
+                                        @else
+                                            <p class="text-sm text-slate-400">-</p>
+                                        @endif
+                                    </div>
+                                    
+                                    <!-- Keterangan -->
+                                    <div class="px-4 py-3 bg-white md:col-span-1">
+                                        <p class="text-xs font-semibold text-slate-500 mb-1">Keterangan</p>
+                                        @if($antrianmesin->{'ket'.$machine['id']})
+                                            <p class="text-sm text-slate-700 break-words">{{ $antrianmesin->{'ket'.$machine['id']} }}</p>
+                                        @else
+                                            <p class="text-sm text-slate-400 italic">Tidak ada keterangan</p>
+                                        @endif
+                                    </div>
+
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-
 </x-app-layout>

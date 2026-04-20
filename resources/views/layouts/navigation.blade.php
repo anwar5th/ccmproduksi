@@ -1,12 +1,13 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-slate-900 border-b border-slate-800">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
+                        <x-application-logo class="block h-9 w-auto fill-current text-white" />
+                        <span class="font-bold text-white text-xl tracking-tight hidden sm:block">CCM Prod</span>
                     </a>
                 </div>
 
@@ -81,17 +82,19 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-slate-300 bg-slate-800 hover:text-white focus:outline-none transition ease-in-out duration-150 border border-slate-700 hover:border-slate-600">
                             <div class="flex items-center">
                                 <!-- User icon (circle) above the name, rendered as inline SVG -->
-                                <div class="flex flex-row items-center mr-3 gap-2">
-                                    <div class="flex flex-col text-right ml-2">
-                                        <div class="text-xs text-gray-700 truncate">{{ Auth::user()->name }}</div>
-                                        <div class="text-xs text-gray-500 truncate">{{ Auth::user()->role == 1 ? 'Engineering & Estimator' : 'Admin Produksi' }}</div>
+                                <div class="flex flex-row items-center gap-3">
+                                    <div class="flex flex-col text-right">
+                                        <div class="text-sm font-semibold text-white">{{ Auth::user()->name }}</div>
+                                        <div class="text-xs text-slate-400">{{ Auth::user()->role == 1 ? 'Engineering & Estimator' : 'Admin Produksi' }}</div>
                                     </div>
-                                    <svg class="h-8 w-8 text-gray-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" aria-hidden="true" focusable="false">
-                                        <path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96a88 88 0 1 1 0 176 88 88 0 1 1 0-176zm0 352c-59.6 0-112.6-32.9-140.9-81.6 7.8-48.4 96.6-74.4 140.9-74.4s133.1 26 140.9 74.4C360.6 423.1 307.6 456 248 456z"/>
-                                    </svg>
+                                    <div class="h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center text-slate-300 border border-slate-600">
+                                        <svg class="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </button>
@@ -137,10 +140,10 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="pt-4 pb-1 border-t border-slate-800">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                <div class="font-medium text-base text-white">{{ Auth::user()->name }}</div>
+                <div class="font-medium text-sm text-slate-400">{{ Auth::user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
