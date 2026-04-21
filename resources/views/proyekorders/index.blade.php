@@ -8,7 +8,7 @@
     </x-slot>
 
     <div class="py-8">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             
             <div class="bg-white shadow-sm rounded-xl border border-slate-200 overflow-hidden">
                 <div class="pt-6 pr-6 flex items-center justify-end gap-4">
@@ -66,7 +66,9 @@
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Nama PO</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Tanggal PO</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">List Item SPK</th>
-                                <th scope="col" class="px-6 py-4 text-right text-xs font-semibold text-slate-600 uppercase tracking-wider">Aksi</th>
+                                <th scope="col" class="px-6 py-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">Aksi</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Dibuat</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Diubah</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-slate-200">
@@ -105,6 +107,12 @@
                                             @csrf
                                             @method('DELETE')
                                         </form>
+                                    </td>
+                                    <td class="px-6 py-5 whitespace-nowrap text-sm text-slate-600">
+                                        {{ $po->created_at ? \Carbon\Carbon::parse($po->created_at)->format('d M Y H.i') : '-' }}
+                                    </td>
+                                    <td class="px-6 py-5 whitespace-nowrap text-sm text-slate-600">
+                                        {{ $po->updated_at ? \Carbon\Carbon::parse($po->updated_at)->format('d M Y H.i') : '-' }}
                                     </td>
                                 </tr>
                             @empty

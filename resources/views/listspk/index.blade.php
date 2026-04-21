@@ -59,7 +59,9 @@
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Tanggal SPK</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Nama Barang</th>
                                 <th scope="col" class="px-6 py-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">Qty (Stok)</th>
-                                <th scope="col" class="px-6 py-4 text-right text-xs font-semibold text-slate-600 uppercase tracking-wider">Aksi</th>
+                                <th scope="col" class="px-6 py-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">Aksi</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Dibuat</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Diubah</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-slate-200">
@@ -94,6 +96,12 @@
                                             @csrf
                                             @method('DELETE')
                                         </form>
+                                    </td>
+                                    <td class="px-6 py-5 whitespace-nowrap text-sm text-slate-600">
+                                        {{ $spk->created_at ? \Carbon\Carbon::parse($spk->created_at)->format('d M Y H.i') : '-' }}
+                                    </td>
+                                    <td class="px-6 py-5 whitespace-nowrap text-sm text-slate-600">
+                                        {{ $spk->updated_at ? \Carbon\Carbon::parse($spk->updated_at)->format('d M Y H.i') : '-' }}
                                     </td>
                                 </tr>
                             @empty
