@@ -29,11 +29,66 @@ class ProyekOrderController extends Controller
     public function index(Request $request): View
     {
 
-        //get search
-        $keyword = $request->keyword;
-        //get proyekorders
-        $proyekorders = Proyekorder::where('namaproyek', 'LIKE', '%'.$keyword.'%')->orWhere('tglpo', $keyword)->latest()->paginate(5);
-        
+        // Build query
+        $query = Proyekorder::latest();
+
+        // keyword search (nama proyek, kodepo or tglpo)
+        if ($request->filled('keyword')) {
+            $kw = $request->keyword;
+            $query->where(function ($q) use ($kw) {
+                $q->where('namaproyek', 'LIKE', '%' . $kw . '%')
+                  ->orWhere('kodepo', 'LIKE', '%' . $kw . '%')
+                  ->orWhere('tglpo', $kw);
+            });
+        }
+
+        // Additional filters similar to AntrianMesin page
+        // filter by nama PO (namaproyek)
+        if ($request->filled('po')) {
+            $query->where('namaproyek', 'LIKE', '%' . $request->po . '%');
+        }
+
+        // filter by related SPK (nospk) or nama barang in Antrianmesin
+        if ($request->filled('nospk')) {
+            $nospk = $request->nospk;
+            $query->whereHas('antrianmesin', function ($q) use ($nospk) {
+                $q->where('nospk', 'LIKE', '%' . $nospk . '%');
+            });
+        }
+
+        if ($request->filled('namabarang')) {
+            $namabarang = $request->namabarang;
+            $query->whereHas('antrianmesin', function ($q) use ($namabarang) {
+                $q->where('namabarang', 'LIKE', '%' . $namabarang . '%');
+            });
+        }
+
+        // filter tanggal SPK range on related antrianmesin.tglspk
+        if ($request->filled('tglspk_from')) {
+            $from = $request->tglspk_from;
+            $query->whereHas('antrianmesin', function ($q) use ($from) {
+                $q->whereDate('tglspk', '>=', $from);
+            });
+        }
+
+        if ($request->filled('tglspk_to')) {
+            $to = $request->tglspk_to;
+            $query->whereHas('antrianmesin', function ($q) use ($to) {
+                $q->whereDate('tglspk', '<=', $to);
+            });
+        }
+
+        // Page length / per page
+        $perPage = $request->perPage ? (int) $request->perPage : 10;
+        $allowed = [5,10,25,50,100];
+        if (!in_array($perPage, $allowed)) {
+            $perPage = 10;
+        }
+
+        // Paginate and preserve query string
+        $proyekorders = $query->paginate($perPage);
+        $proyekorders->appends($request->query());
+
         //render view with proyekorders
         return view('proyekorders.index', compact('proyekorders'));
     }

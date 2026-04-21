@@ -11,26 +11,49 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <div class="bg-white shadow-sm rounded-xl border border-slate-200 overflow-hidden">
+                <div class="pt-6 pr-6 flex items-center justify-end gap-4">
+                    <a href="{{ route('proyekorders.create')}}" class="inline-flex items-center px-4 py-2 bg-emerald-600 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-emerald-700 focus:bg-emerald-700 active:bg-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition ease-in-out duration-150 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        PO Baru
+                    </a>
+                </div>
                 <div class="p-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div class="flex items-center gap-4">
-                        <h3 class="text-lg font-bold text-slate-900">List Data PO</h3>
-                        <a href="{{ route('proyekorders.create')}}" class="inline-flex items-center px-4 py-2 bg-emerald-600 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-emerald-700 focus:bg-emerald-700 active:bg-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition ease-in-out duration-150 shadow-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 mr-2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                            </svg>
-                            PO Baru
-                        </a>
-                    </div>
                     
-                    <!-- Search -->
-                    <form action="" method="GET" class="w-full sm:w-96 relative">
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
-                                </svg>
+                    <!-- Filters -->
+                    <form action="{{ route('proyekorders.index') }}" method="GET" class="w-full mt-4 sm:mt-0">
+                        <input type="hidden" name="perPage" value="{{ request('perPage', 10) }}">
+                        <div class="grid grid-cols-1 sm:grid-cols-6 gap-2 w-full">
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Nama PO</label>
+                                <input name="po" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari nama PO..." value="{{ request('po') }}">
                             </div>
-                            <input name="keyword" type="text" class="block w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg leading-5 bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm transition duration-150 ease-in-out" placeholder="Cari Nama PO / Tanggal PO..." value="{{ request('keyword') }}">
+
+                            <div class="sm:col-span-1">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">No SPK</label>
+                                <input name="nospk" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari No SPK..." value="{{ request('nospk') }}">
+                            </div>
+
+                            <div class="sm:col-span-1">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Nama Barang</label>
+                                <input name="namabarang" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari nama barang..." value="{{ request('namabarang') }}">
+                            </div>
+
+                            <div class="sm:col-span-1">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Tgl SPK dari</label>
+                                <input name="tglspk_from" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglspk_from') }}">
+                            </div>
+
+                            <div class="sm:col-span-1">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">sampai</label>
+                                <input name="tglspk_to" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglspk_to') }}">
+                            </div>
+
+                            <div class="sm:col-span-6 flex items-end justify-end gap-2 mt-2 sm:mt-0">
+                                <button type="submit" class="inline-flex items-center px-3 py-1.5 bg-emerald-600 text-white hover:bg-emerald-700 rounded-md text-sm font-semibold">Cari</button>
+                                <a href="{{ route('proyekorders.index', ['perPage' => request('perPage', 10)]) }}" class="inline-flex items-center px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-md text-sm font-semibold">Reset</a>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -100,11 +123,36 @@
                     </table>
                 </div>
                 
-                @if($proyekorders->hasPages())
-                <div class="px-6 py-4 border-t border-slate-200 bg-slate-50">
-                    {{ $proyekorders->links() }}
+                <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 flex flex-col lg:flex-row items-center justify-end gap-4">
+                    <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-center lg:justify-start">
+                        <form action="{{ route('proyekorders.index') }}" method="GET" id="perPageForm" class="flex items-center gap-2">
+                            <input type="hidden" name="keyword" value="{{ request('keyword') }}">
+                            <input type="hidden" name="page" value="1">
+                            <label for="perPage" class="text-sm font-medium text-slate-600">Tampilkan:</label>
+                            @php $pp = (int) request('perPage', 10); @endphp
+                            <select name="perPage" id="perPage" onchange="this.form.submit()" class="block w-20 pl-3 pr-8 py-1.5 text-sm border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 shadow-sm transition-shadow">
+                                @foreach([5,10,25,50,100] as $opt)
+                                    <option value="{{ $opt }}" {{ $pp == $opt ? 'selected' : '' }}>{{ $opt }}</option>
+                                @endforeach
+                            </select>
+                            <span class="text-sm text-slate-500">baris</span>
+                        </form>
+
+                        @if($proyekorders->lastPage() > 1)
+                        <div class="h-5 w-px bg-slate-300 hidden sm:block"></div>
+                        <form action="{{ route('proyekorders.index') }}" method="GET" id="pageJumpForm" class="flex items-center gap-2">
+                            <input type="hidden" name="keyword" value="{{ request('keyword') }}">
+                            <input type="hidden" name="perPage" value="{{ request('perPage', 10) }}">
+                            <label for="pageJump" class="text-sm font-medium text-slate-600 hidden sm:inline-block">Ke halaman:</label>
+                            <select name="page" id="pageJump" onchange="this.form.submit()" class="block w-28 pl-3 pr-8 py-1.5 text-sm border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 shadow-sm transition-shadow">
+                                @for ($i = 1; $i <= $proyekorders->lastPage(); $i++)
+                                    <option value="{{ $i }}" {{ $proyekorders->currentPage() == $i ? 'selected' : '' }}>Hal {{ $i }} / {{ $proyekorders->lastPage() }}</option>
+                                @endfor
+                            </select>
+                        </form>
+                        @endif
+                    </div>
                 </div>
-                @endif
                 
             </div>
         </div>
