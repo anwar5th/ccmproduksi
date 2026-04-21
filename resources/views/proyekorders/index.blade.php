@@ -25,29 +25,29 @@
                     <form action="{{ route('proyekorders.index') }}" method="GET" class="w-full mt-4 sm:mt-0">
                         <input type="hidden" name="perPage" value="{{ request('perPage', 10) }}">
                         <div class="grid grid-cols-1 sm:grid-cols-6 gap-2 w-full">
+                            <div class="sm:col-span-1">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Kode PO</label>
+                                <input name="kodepo" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari Kode PO..." value="{{ request('kodepo') }}">
+                            </div>
+
                             <div class="sm:col-span-2">
                                 <label class="block text-xs font-medium text-slate-600 mb-1">Nama PO</label>
                                 <input name="po" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari nama PO..." value="{{ request('po') }}">
                             </div>
 
                             <div class="sm:col-span-1">
-                                <label class="block text-xs font-medium text-slate-600 mb-1">No SPK</label>
-                                <input name="nospk" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari No SPK..." value="{{ request('nospk') }}">
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <label class="block text-xs font-medium text-slate-600 mb-1">Nama Barang</label>
-                                <input name="namabarang" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari nama barang..." value="{{ request('namabarang') }}">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">List Item SPK</label>
+                                <input name="keteranganpoitem" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari List Item SPK..." value="{{ request('keteranganpoitem') }}">
                             </div>
 
                             <div class="sm:col-span-1">
                                 <label class="block text-xs font-medium text-slate-600 mb-1">Tgl SPK dari</label>
-                                <input name="tglspk_from" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglspk_from') }}">
+                                <input name="tglpo_from" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglpo_from') }}">
                             </div>
 
                             <div class="sm:col-span-1">
                                 <label class="block text-xs font-medium text-slate-600 mb-1">sampai</label>
-                                <input name="tglspk_to" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglspk_to') }}">
+                                <input name="tglpo_to" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglpo_to') }}">
                             </div>
 
                             <div class="sm:col-span-6 flex items-end justify-end gap-2 mt-2 sm:mt-0">

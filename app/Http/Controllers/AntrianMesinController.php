@@ -35,18 +35,18 @@ class AntrianMesinController extends Controller
             $po = $request->po;
 
             $query->whereHas('proyekorder', function ($q) use ($po) {
-                $q->where('namaproyek', 'LIKE', '%' . $po . '%');
+                $q->where('namaproyek', 'ILIKE', '%' . $po . '%');
             });
         }
 
         // filter nospk
         if ($request->filled('nospk')) {
-            $query->where('nospk', 'LIKE', '%' . $request->nospk . '%');
+            $query->where('nospk', 'ILIKE', '%' . $request->nospk . '%');
         }
 
         // filter nama barang
         if ($request->filled('namabarang')) {
-            $query->where('namabarang', 'LIKE', '%' . $request->namabarang . '%');
+            $query->where('namabarang', 'ILIKE', '%' . $request->namabarang . '%');
         }
 
         // filter tanggal SPK (range)

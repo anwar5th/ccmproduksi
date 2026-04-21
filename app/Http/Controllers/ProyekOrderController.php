@@ -32,50 +32,27 @@ class ProyekOrderController extends Controller
         // Build query
         $query = Proyekorder::latest();
 
-        // keyword search (nama proyek, kodepo or tglpo)
-        if ($request->filled('keyword')) {
-            $kw = $request->keyword;
-            $query->where(function ($q) use ($kw) {
-                $q->where('namaproyek', 'LIKE', '%' . $kw . '%')
-                  ->orWhere('kodepo', 'LIKE', '%' . $kw . '%')
-                  ->orWhere('tglpo', $kw);
-            });
-        }
-
-        // Additional filters similar to AntrianMesin page
         // filter by nama PO (namaproyek)
         if ($request->filled('po')) {
-            $query->where('namaproyek', 'LIKE', '%' . $request->po . '%');
+            $query->where('namaproyek', 'ILIKE', '%' . $request->po . '%');
         }
 
         // filter by related SPK (nospk) or nama barang in Antrianmesin
-        if ($request->filled('nospk')) {
-            $nospk = $request->nospk;
-            $query->whereHas('antrianmesin', function ($q) use ($nospk) {
-                $q->where('nospk', 'LIKE', '%' . $nospk . '%');
-            });
+        if ($request->filled('kodepo')) {
+            $query->where('kodepo', 'ILIKE', '%' . $request->kodepo . '%');
         }
 
-        if ($request->filled('namabarang')) {
-            $namabarang = $request->namabarang;
-            $query->whereHas('antrianmesin', function ($q) use ($namabarang) {
-                $q->where('namabarang', 'LIKE', '%' . $namabarang . '%');
-            });
+        if ($request->filled('keteranganpoitem')) {
+            $query->where('keteranganpoitem', 'ILIKE', '%' . $request->keteranganpoitem . '%');
         }
 
-        // filter tanggal SPK range on related antrianmesin.tglspk
-        if ($request->filled('tglspk_from')) {
-            $from = $request->tglspk_from;
-            $query->whereHas('antrianmesin', function ($q) use ($from) {
-                $q->whereDate('tglspk', '>=', $from);
-            });
+        // filter tanggal PO range on proyekorders.tglpo
+        if ($request->filled('tglpo_from')) {
+            $query->where('tglpo', '>=', $request->tglpo_from);
         }
 
-        if ($request->filled('tglspk_to')) {
-            $to = $request->tglspk_to;
-            $query->whereHas('antrianmesin', function ($q) use ($to) {
-                $q->whereDate('tglspk', '<=', $to);
-            });
+        if ($request->filled('tglpo_to')) {
+            $query->where('tglpo', '<=', $request->tglpo_to);
         }
 
         // Page length / per page
