@@ -12,10 +12,9 @@
             
             <div class="bg-white shadow-sm rounded-xl border border-slate-200 overflow-hidden">
                 <div class="p-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <h3 class="text-lg font-bold text-slate-900">Status Proses & Antrian Mesin</h3>
                     
                     <!-- Filters -->
-                    <form action="{{ route('antrianmesin.index') }}" method="GET" class="w-full">
+                    <form action="{{ route('antrianmesin.index') }}" method="GET" class="w-full mt-4 sm:mt-0">
                         <input type="hidden" name="perPage" value="{{ request('perPage', 10) }}">
                         <div class="grid grid-cols-1 sm:grid-cols-6 gap-2 w-full">
                             <div class="sm:col-span-2">

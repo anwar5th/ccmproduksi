@@ -28,15 +28,51 @@ class ListSpkController extends Controller
      */
     public function index(Request $request): View
     {
+        // Build query with eager load
+        $query = Antrianmesin::with('proyekorder')->latest();
 
-        //get search
-        $keyword = $request->keyword;
-        //get posts
-        $listspk = Antrianmesin::where('nospk', 'LIKE', '%'.$keyword.'%')->latest()->paginate(5);
+        // Filters
+        // filter berdasarkan proyek order (relasi)
+        if ($request->filled('po')) {
+            $po = $request->po;
 
-        //render view with posts
-        return view('listspk.index', compact('listspk')); //text warna oranye "antrianmesin"(folder) didapat dari folder /resources/views/antrianmesin dan text index didapat dari file "index" berada di /resources/views/antrianmesin/index.blade.php
-        // compact adalah mengambil variabel $antrianmesin yg ada di atas
+            $query->whereHas('proyekorder', function ($q) use ($po) {
+                $q->where('namaproyek', 'LIKE', '%' . $po . '%');
+            });
+        }
+
+        // filter nospk
+        if ($request->filled('nospk')) {
+            $query->where('nospk', 'LIKE', '%' . $request->nospk . '%');
+        }
+
+        // filter nama barang
+        if ($request->filled('namabarang')) {
+            $query->where('namabarang', 'LIKE', '%' . $request->namabarang . '%');
+        }
+
+        // filter tanggal SPK (exact or range)
+        if ($request->filled('tglspk_from')) {
+            $query->whereDate('tglspk', '>=', $request->tglspk_from);
+        }
+
+        if ($request->filled('tglspk_to')) {
+            $query->whereDate('tglspk', '<=', $request->tglspk_to);
+        }
+
+        // Page length / per page
+        $perPage = $request->perPage ? (int) $request->perPage : 10;
+        $allowed = [5,10,25,50,100];
+        if (!in_array($perPage, $allowed)) {
+            $perPage = 10;
+        }
+
+        // Paginate and preserve query string
+        $listspk = $query->paginate($perPage);
+        $listspk->appends($request->query());
+
+        // render view with posts
+        return view('listspk.index', compact('listspk'));
     }
 
     /**
