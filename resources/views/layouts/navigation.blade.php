@@ -7,74 +7,34 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
                         <x-application-logo class="block h-9 w-auto fill-current text-white" />
-                        <span class="font-bold text-white text-xl tracking-tight hidden sm:block">CCM Prod</span>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:items-center sm:-my-px sm:ml-10 sm:flex">
-                    <!-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Produksi') }}
-                    </x-nav-link> -->
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+
                     @if(Auth::user()->role == 1)
-                    <x-dropdown align="left" width="48">
-                        <x-slot name="trigger">
-                            <x-nav-link>
-                                {{ __('Office L2') }}
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                            </x-nav-link>
-                        </x-slot>
-                            
-                        <x-slot name="content">
-                            <x-dropdown-link :href="route('proyekorders.index')">
-                                {{ __('Input PO & SPK') }}
-                            </x-dropdown-link>
-                            
-                        </x-slot>
-                    </x-dropdown>
+                    <x-nav-link :href="route('proyekorders.index')" :active="request()->routeIs('proyekorders.*')">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        {{ __('Input PO & SPK') }}
+                    </x-nav-link>
                     @endif
+
                     @if(Auth::user()->role == 2)
-                    <!-- nav menu 2 -->
-                    <x-dropdown align="left" width="48">
-                        <x-slot name="trigger">
-                            <x-nav-link>
-                                {{ __('Produksi WS1') }}
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                            </x-nav-link>
-                        </x-slot>
-                            
-                        <x-slot name="content">
-                            
-                            <x-dropdown-link :href="route('listspk.index')">
-                                {{ __('List SPK') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('antrianmesin.index')">
-                                {{ __('Antrian Mechine') }}
-                            </x-dropdown-link>
-                        </x-slot>
-                    </x-dropdown>
+                    <x-nav-link :href="route('listspk.index')" :active="request()->routeIs('listspk.*')">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        {{ __('List SPK') }}
+                    </x-nav-link>
+                    
+                    <x-nav-link :href="route('antrianmesin.index')" :active="request()->routeIs('antrianmesin.*')">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        {{ __('Antrian Mesin') }}
+                    </x-nav-link>
                     @endif
-                    <!-- nav menu 3 -->
-                    {{--
-                    <x-dropdown align="left" width="48">
-                        <x-slot name="trigger">
-                            <x-nav-link>
-                                {{ __('Produksi WS2') }}
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                            </x-nav-link>
-                        </x-slot>
-                            
-                        <x-slot name="content">
-                            
-                        </x-slot>
-                    </x-dropdown>
-                    --}}
                 </div>
             </div>
 
@@ -135,8 +95,36 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    {{ __('Dashboard') }}
+                </div>
             </x-responsive-nav-link>
+
+            @if(Auth::user()->role == 1)
+            <x-responsive-nav-link :href="route('proyekorders.index')" :active="request()->routeIs('proyekorders.*')">
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    {{ __('Input PO & SPK') }}
+                </div>
+            </x-responsive-nav-link>
+            @endif
+
+            @if(Auth::user()->role == 2)
+            <x-responsive-nav-link :href="route('listspk.index')" :active="request()->routeIs('listspk.*')">
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                    {{ __('List SPK') }}
+                </div>
+            </x-responsive-nav-link>
+            
+            <x-responsive-nav-link :href="route('antrianmesin.index')" :active="request()->routeIs('antrianmesin.*')">
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    {{ __('Antrian Mesin') }}
+                </div>
+            </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
