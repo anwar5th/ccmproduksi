@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CCM Produksi - Sistem Manajemen</title>
+    <title>FCS - Sistem Manajemen</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,34 +12,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased text-slate-900 bg-slate-50 min-h-screen flex flex-col">
-
-    <!-- Header Navigation -->
-    <header class="bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-3">
-                    <span class="font-bold text-xl tracking-tight text-slate-900">CCM Produksi</span>
-                </div>
-                {{--<div>
-                    @if (Route::has('login'))
-                        <div class="flex items-center gap-4">
-                            @auth
-                                <a href="{{ url('/dashboard') }}" class="text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors">Dashboard</a>
-                            @else
-                                <!-- <a href="{{ route('login') }}" class="text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors">Log in</a> -->
-
-                                <!-- @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors">Register</a>
-                                @endif -->
-                                <a href="{{ route('login') }}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors">Log In</a>
-                            @endauth
-                        </div>
-                    @endif
-                </div>--}}
-            </div>
-        </div>
-    </header>
-
     <!-- Main Content / Hero -->
     <main class="flex-grow flex items-center justify-center relative overflow-hidden">
         <!-- Background Pattern -->
@@ -71,7 +43,7 @@
     <footer class="bg-white border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="text-sm text-slate-500">
-                &copy; {{ date('Y') }} PT Citra Cikal Mapan. All rights reserved.
+                &copy; {{ date('Y') }} FCS App. All rights reserved.
             </div>
             <!-- <div class="text-sm text-slate-500 font-medium">
                 Devisi IT Syaiful Anwar

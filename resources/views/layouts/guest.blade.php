@@ -25,7 +25,7 @@
                     <div class="flex justify-center mb-8">
                         <a href="/" class="flex flex-col items-center">
                             <x-application-ccm class="block h-12 w-auto fill-current text-slate-800" />
-                            <span class="mt-2 text-xl font-bold tracking-tight text-slate-900">CCM Produksi</span>
+                            <span class="mt-2 text-xl font-bold tracking-tight text-slate-900">FCS</span>
                         </a>
                     </div>
                     
@@ -33,7 +33,7 @@
                 </div>
                 
                 <div class="mt-8 text-sm text-slate-500">
-                    &copy; {{ date('Y') }} PT Citra Cikal Mapan. All rights reserved.
+                    &copy; {{ date('Y') }} FCS App. All rights reserved.
                 </div>
             </div>
 

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'ccmapps') }}</title>
+        <title>{{ config('app.name', 'fcs') }}</title>
 
         <!-- Tambahan -->
         <meta http-equiv="X-UA-Compatible" content="ie=edge">

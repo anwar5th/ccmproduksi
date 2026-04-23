@@ -1,16 +1,10 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Produksi WS1') }}
-        </h2>
-    </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <div class="mb-8 px-4 sm:px-0">
-                <h3 class="text-2xl font-bold text-slate-900">Selamat Datang di CCM Produksi</h3>
-                <p class="text-slate-500 mt-1">Sistem Manajemen Produksi PT Citra Cikal Mapan</p>
+                <h3 class="text-2xl font-bold text-slate-900">Selamat Datang di FCS</h3>
+                <p class="text-slate-500 mt-1">Sistem Manajemen Produksi Furniture</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-0">
