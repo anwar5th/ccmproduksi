@@ -84,6 +84,17 @@
                                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
+
+                        </div>
+                        
+                        <div class="border-t border-slate-200 pt-6">
+                            <div>
+                                <label for="tglcompleted" class="block text-sm font-semibold text-slate-700">Tanggal Selesai</label>
+                                <input type="datetime-local" id="tglcompleted" name="tglcompleted" value="{{ old('tglcompleted') ? \Carbon\Carbon::parse(old('tglcompleted'))->format('Y-m-d\TH:i') : ($listspk->tglcompleted ? \Carbon\Carbon::parse($listspk->tglcompleted)->format('Y-m-d\TH:i') : '') }}" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm {{ $errors->has('tglcompleted') ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : '' }}">
+                                @error('tglcompleted')
+                                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
 
                         <div class="border-t border-slate-200 pt-6">
@@ -131,9 +142,6 @@
                         <div class="flex items-center gap-4 pt-6 border-t border-slate-200">
                             <button type="submit" class="inline-flex justify-center rounded-lg border border-transparent bg-emerald-600 px-6 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-colors">
                                 Simpan Perubahan
-                            </button>
-                            <button type="reset" class="inline-flex justify-center rounded-lg border border-slate-300 bg-white px-6 py-2.5 text-sm font-bold text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 transition-colors">
-                                Reset
                             </button>
                         </div>
 

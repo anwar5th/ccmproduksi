@@ -27,7 +27,7 @@ class AntrianMesinController extends Controller
     public function index(Request $request): View
     {
         // Build query with eager load
-        $query = Antrianmesin::with('proyekorder')->latest();
+        $query = Antrianmesin::with('proyekorder')->whereNull('tglcompleted')->orderBy('tglspk', 'desc');
 
         // Filters
         // filter berdasarkan proyek order (relasi)

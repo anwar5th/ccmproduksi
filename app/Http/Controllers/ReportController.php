@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 //import Model "Antrianmesin"
 use App\Models\Antrianmesin;
-
-//import Model "Proyekorder
 use App\Models\Proyekorder;
 
 //return type View
@@ -19,7 +17,7 @@ use Illuminate\Http\RedirectResponse;
 //import Facade "Storage"
 use Illuminate\Support\Facades\Storage;
 
-class ListSpkController extends Controller
+class ReportController extends Controller
 {
  /**
      * index
@@ -29,7 +27,7 @@ class ListSpkController extends Controller
     public function index(Request $request): View
     {
         // Build query with eager load
-        $query = Antrianmesin::with('proyekorder')->orderByRaw('tglcompleted IS NULL DESC')->orderBy('tglspk', 'desc');
+        $query = Antrianmesin::with('proyekorder')->whereNotNull('tglcompleted')->orderBy('tglcompleted', 'desc');
 
         // Filters
         // filter berdasarkan proyek order (relasi)
@@ -51,21 +49,13 @@ class ListSpkController extends Controller
             $query->where('namabarang', 'ILIKE', '%' . $request->namabarang . '%');
         }
 
-        // filter tanggal SPK (exact or range)
+        // filter tanggal SPK (range)
         if ($request->filled('tglspk_from')) {
             $query->whereDate('tglspk', '>=', $request->tglspk_from);
         }
 
         if ($request->filled('tglspk_to')) {
             $query->whereDate('tglspk', '<=', $request->tglspk_to);
-        }
-
-        if ($request->filled('status')) {
-            if ($request->status == 'selesai') {
-                $query->whereNotNull('tglcompleted');
-            } elseif ($request->status == 'proses') {
-                $query->whereNull('tglcompleted');
-            }
         }
 
         // Page length / per page
@@ -76,39 +66,37 @@ class ListSpkController extends Controller
         }
 
         // Paginate and preserve query string
-        $listspk = $query->paginate($perPage);
-        $listspk->appends($request->query());
+        $antrianmesin = $query->paginate($perPage);
+        // preserve current query parameters (filters) in pagination links
+        $antrianmesin->appends($request->query());
 
         // render view with posts
-        return view('listspk.index', compact('listspk'));
-    }
+        return view('report.index', compact('antrianmesin'));
+    }   
 
-    /**
-     * edit
+    // MEMBUAT CONTROLLER CREATE
+
+/**
+     * create
      *
-     * @param  mixed $id
      * @return View
      */
-    public function edit(string $id): View
+    public function create(): View
     {
-        //get post by ID
-        $listspk = Antrianmesin::findOrFail($id);
 
-        //get Proyekorder by ID
-        $proyekorders = Proyekorder::findOrFail($id);
+        $proyekorders = Proyekorder::all();
 
-        //render view with post
-        return view('listspk.edit', compact('proyekorders' , 'listspk'));
-    }
+        return view('report.create');
     
+    }
+
     /**
-     * update
+     * store
      *
      * @param  mixed $request
-     * @param  mixed $id
      * @return RedirectResponse
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         //validate form
         $this->validate($request, [
@@ -116,13 +104,8 @@ class ListSpkController extends Controller
             'namabarang'   => 'required|min:5'
         ]);
 
-        //get proyekorder by ID
-        $proyekorders = Proyekorder::findOrFail($id);
-
-        //get antrianmesin by ID
-        $listspk = Antrianmesin::findOrFail($id);
-
-        $listspk->update([
+        //create Antrianmesin
+        Antrianmesin::create([
             'proyekorders_id'     => $request->proyekorders_id,
             'nospk'     => $request->nospk,
             'tglspk'   => $request->tglspk,
@@ -151,31 +134,26 @@ class ListSpkController extends Controller
 
             'tglmfinish'   => $request->tglmfinish,
             'tglkfinish'   => $request->tglkfinish,
-            'ketfinish'   => $request->ketfinish,
-
-            'tglcompleted'   => !empty($request->tglcompleted) ? $request->tglcompleted : null
+            'ketfinish'   => $request->ketfinish
         ]);
 
         //redirect to index
-        return redirect()->route('listspk.index')->with(['success' => 'Data Berhasil Diubah!']);
+        return redirect()->route('report.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
-    /**
-     * destroy
+       /**
+     * show
      *
-     * @param  mixed $post
-     * @return void
+     * @param  mixed $id
+     * @return View
      */
-    public function destroy($id): RedirectResponse
+    public function show(string $id): View
     {
         //get post by ID
-        $listspk = Antrianmesin::findOrFail($id);
+        $antrianmesin = Antrianmesin::findOrFail($id);
 
-        //delete post
-        $listspk->delete();
-
-        //redirect to index
-        return redirect()->route('listspk.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        //render view with post
+        return view('report.show', compact('antrianmesin')); // compact adalah mengambil variabel $antrianmesin yg ada di atas
     }
-
+    
 }

@@ -41,6 +41,7 @@ class Antrianmesin extends Model
         'tglkfinish',
         'ketfinish',
 
+        'tglcompleted'
     ];
 
     public function proyekorder()

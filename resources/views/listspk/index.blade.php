@@ -17,7 +17,7 @@
                     <form action="{{ route('listspk.index') }}" method="GET" class="w-full mt-4 sm:mt-0">
                         <input type="hidden" name="perPage" value="{{ request('perPage', 10) }}">
                         <div class="grid grid-cols-1 sm:grid-cols-6 gap-2 w-full">
-                            <div class="sm:col-span-2">
+                            <div class="sm:col-span-1">
                                 <label class="block text-xs font-medium text-slate-600 mb-1">Nama PO</label>
                                 <input name="po" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari nama PO..." value="{{ request('po') }}">
                             </div>
@@ -30,6 +30,15 @@
                             <div class="sm:col-span-1">
                                 <label class="block text-xs font-medium text-slate-600 mb-1">Nama Barang</label>
                                 <input name="namabarang" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari nama barang..." value="{{ request('namabarang') }}">
+                            </div>
+
+                            <div class="sm:col-span-1">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Status</label>
+                                <select name="status" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('status') }}">
+                                    <option value="">Semua</option>
+                                    <option value="selesai" {{ request('status') == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                                    <option value="proses" {{ request('status') == 'proses' ? 'selected' : '' }}>Proses</option>
+                                </select>
                             </div>
 
                             <div class="sm:col-span-1">
@@ -59,6 +68,7 @@
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Tanggal SPK</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Nama Barang</th>
                                 <th scope="col" class="px-6 py-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">Qty (Stok)</th>
+                                <th scope="col" class="px-6 py-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">Status</th>
                                 <th scope="col" class="px-6 py-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">Aksi</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Dibuat</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Diubah</th>
@@ -84,6 +94,13 @@
                                             {{ $spk->qtybarang }}
                                         </span>
                                     </td>
+                                    <td class="px-6 py-5 whitespace-nowrap text-center text-sm">
+                                        @if ($spk->tglcompleted)
+                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">Selesai</span>
+                                        @else
+                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200 shadow-sm animate-pulse">Proses</span>
+                                        @endif
+                                    </td>
                                     <td class="px-6 py-5 whitespace-nowrap text-right text-sm font-medium">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('listspk.destroy', $spk->id) }}" method="POST" class="inline-flex items-center gap-2">
                                             <a href="{{ route('listspk.edit', $spk->id) }}" class="inline-flex items-center px-3 py-1.5 bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 rounded-md transition-colors text-sm font-semibold shadow-sm">
@@ -106,7 +123,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="px-6 py-8 text-center text-slate-500 bg-slate-50">
+                                    <td colspan="9" class="px-6 py-8 text-center text-slate-500 bg-slate-50">
                                         <div class="flex flex-col items-center justify-center">
                                             <svg class="w-12 h-12 text-slate-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
