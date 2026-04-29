@@ -1,1 +1,1 @@
-<img src="{{ asset('img/Backgroundccm2.jpg') }}">
+<img src="{{ asset('img/bg-fcs.png') }}">

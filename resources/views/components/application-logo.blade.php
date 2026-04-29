@@ -1,1 +1,1 @@
-<img src="{{ asset('img/ccmlogo.png') }}" width="75px" >
+<img src="{{ asset('img/fcslogo.png') }}" width="75px" >
