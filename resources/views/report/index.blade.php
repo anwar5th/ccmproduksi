@@ -21,13 +21,29 @@
                                 <label class="block text-xs font-medium text-slate-600 mb-1">Nama PO</label>
                                 <input name="po" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari nama PO..." value="{{ request('po') }}">
                             </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Kode PO</label>
+                                <input name="kodepo" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari nama PO..." value="{{ request('kodepo') }}">
+                            </div>
 
                             <div class="sm:col-span-1">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Tgl PO dari</label>
+                                <input name="tglpo_from" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglpo_from') }}">
+                            </div>
+
+                            <div class="sm:col-span-1">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">sampai</label>
+                                <input name="tglpo_to" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglpo_to') }}">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-6 gap-2 w-full mt-2">
+                            <div class="sm:col-span-2">
                                 <label class="block text-xs font-medium text-slate-600 mb-1">No SPK</label>
                                 <input name="nospk" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari No SPK..." value="{{ request('nospk') }}">
                             </div>
 
-                            <div class="sm:col-span-1">
+                            <div class="sm:col-span-2">
                                 <label class="block text-xs font-medium text-slate-600 mb-1">Nama Barang</label>
                                 <input name="namabarang" type="text" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm" placeholder="Cari nama barang..." value="{{ request('namabarang') }}">
                             </div>
@@ -41,7 +57,8 @@
                                 <label class="block text-xs font-medium text-slate-600 mb-1">sampai</label>
                                 <input name="tglspk_to" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglspk_to') }}">
                             </div>
-
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-6 gap-2 w-full mt-2">
                             <div class="sm:col-span-6 flex items-end justify-end gap-2">
                                 <button type="submit" class="inline-flex items-center px-3 py-1.5 bg-emerald-600 text-white hover:bg-emerald-700 rounded-md text-sm font-semibold">Cari</button>
                                 <a href="{{ route('report.index', ['perPage' => request('perPage', 10)]) }}" class="inline-flex items-center px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-md text-sm font-semibold">Reset</a>
@@ -55,18 +72,19 @@
                         <thead class="bg-slate-50">
                             <tr>
                                 <th scope="col" class="px-4 py-3 text-left font-semibold text-slate-600 uppercase tracking-wider">Nama PO</th>
+                                <th scope="col" class="px-4 py-3 text-left font-semibold text-slate-600 uppercase tracking-wider">Kode PO</th>
+                                <th scope="col" class="px-4 py-3 text-left font-semibold text-slate-600 uppercase tracking-wider">Tanggal PO</th>
                                 <th scope="col" class="px-4 py-3 text-left font-semibold text-slate-600 uppercase tracking-wider">No SPK</th>
                                 <th scope="col" class="px-4 py-3 text-left font-semibold text-slate-600 uppercase tracking-wider">Tanggal SPK</th>
                                 <th scope="col" class="px-4 py-3 text-left font-semibold text-slate-600 uppercase tracking-wider">Nama Barang</th>
                                 <th scope="col" class="px-4 py-3 text-center font-semibold text-slate-600 uppercase tracking-wider">Qty</th>
 
-                                <th scope="col" class="px-3 py-3 text-center font-semibold text-slate-600 uppercase tracking-wider">Hotpress</th>
-                                <th scope="col" class="px-3 py-3 text-center font-semibold text-slate-600 uppercase tracking-wider">Basic</th>
-                                <th scope="col" class="px-3 py-3 text-center font-semibold text-slate-600 uppercase tracking-wider">Edging</th>
-                                <th scope="col" class="px-3 py-3 text-center font-semibold text-slate-600 uppercase tracking-wider">CNC</th>
-                                <th scope="col" class="px-3 py-3 text-center font-semibold text-slate-600 uppercase tracking-wider">Tukang</th>
-                                <th scope="col" class="px-3 py-3 text-center font-semibold text-slate-600 uppercase tracking-wider">Finishing</th>
+                                <th scope="col" class="px-4 py-3 text-left font-semibold text-slate-600 uppercase tracking-wider">Tanggal Selesai</th>
+
                                 <th scope="col" class="px-4 py-3 text-right font-semibold text-slate-600 uppercase tracking-wider">Aksi</th>
+
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Dibuat</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Diubah</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-slate-200">
@@ -74,6 +92,12 @@
                                 <tr class="hover:bg-slate-50 transition-colors duration-150">
                                     <td class="px-4 py-4 whitespace-nowrap font-medium text-slate-900">
                                         {{ $antri->proyekorder->namaproyek }}
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap font-medium text-slate-900">
+                                        {{ $antri->proyekorder->kodepo }}
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap font-medium text-slate-900">
+                                        {{  $antri->proyekorder->tglpo ? \Carbon\Carbon::parse( $antri->proyekorder->tglpo)->format('d M Y H.i') : '-' }}
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-slate-600">
                                         {{ $antri->nospk }}
@@ -90,70 +114,8 @@
                                         </span>
                                     </td>
 
-                                    <!-- Hotpress -->
-                                    <td class="px-3 py-4 whitespace-nowrap text-center">
-                                        @if ($antri->tglkhotpress)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">Selesai</span>
-                                        @elseif ($antri->tglmhotpress)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200 shadow-sm animate-pulse">Proses</span>
-                                        @else
-                                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium text-slate-400">-</span>
-                                        @endif
-                                    </td>
-
-                                    <!-- Basic -->
-                                    <td class="px-3 py-4 whitespace-nowrap text-center">
-                                        @if ($antri->tglkbasic)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">Selesai</span>
-                                        @elseif ($antri->tglmbasic)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200 shadow-sm animate-pulse">Proses</span>
-                                        @else
-                                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium text-slate-400">-</span>
-                                        @endif
-                                    </td>
-
-                                    <!-- Edging -->
-                                    <td class="px-3 py-4 whitespace-nowrap text-center">
-                                        @if ($antri->tglkedging)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">Selesai</span>
-                                        @elseif ($antri->tgmkedging)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200 shadow-sm animate-pulse">Proses</span>
-                                        @else
-                                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium text-slate-400">-</span>
-                                        @endif
-                                    </td>
-
-                                    <!-- CNC -->
-                                    <td class="px-3 py-4 whitespace-nowrap text-center">
-                                        @if ($antri->tglkcnc)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">Selesai</span>
-                                        @elseif ($antri->tglmCnc)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200 shadow-sm animate-pulse">Proses</span>
-                                        @else
-                                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium text-slate-400">-</span>
-                                        @endif
-                                    </td>
-
-                                    <!-- Tukang -->
-                                    <td class="px-3 py-4 whitespace-nowrap text-center">
-                                        @if ($antri->tglktukang)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">Selesai</span>
-                                        @elseif ($antri->tglmTukang)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200 shadow-sm animate-pulse">Proses</span>
-                                        @else
-                                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium text-slate-400">-</span>
-                                        @endif
-                                    </td>
-
-                                    <!-- Finishing -->
-                                    <td class="px-3 py-4 whitespace-nowrap text-center">
-                                        @if ($antri->tglkfinish)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">Selesai</span>
-                                        @elseif ($antri->tglmFinish)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200 shadow-sm animate-pulse">Proses</span>
-                                        @else
-                                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium text-slate-400">-</span>
-                                        @endif
+                                    <td class="px-4 py-4 whitespace-nowrap text-slate-600">
+                                        {{ $antri->tglcompleted ? \Carbon\Carbon::parse($antri->tglcompleted)->format('d M Y H.i') : '-' }}
                                     </td>
 
                                     <td class="px-4 py-4 whitespace-nowrap text-right font-medium">
@@ -164,6 +126,13 @@
                                             </svg>
                                             Detail
                                         </a>
+                                    </td>
+
+                                    <td class="px-6 py-5 whitespace-nowrap text-sm text-slate-600">
+                                        {{ $antri->created_at ? \Carbon\Carbon::parse($antri->created_at)->format('d M Y H.i') : '-' }}
+                                    </td>
+                                    <td class="px-6 py-5 whitespace-nowrap text-sm text-slate-600">
+                                        {{ $antri->updated_at ? \Carbon\Carbon::parse($antri->updated_at)->format('d M Y H.i') : '-' }}
                                     </td>
                                 </tr>
                             @empty

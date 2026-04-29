@@ -24,6 +24,10 @@
                 <div class="p-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div>
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Kode PO</p>
+                            <p class="text-sm font-bold text-slate-900">{{ $antrianmesin->proyekorder->kodepo ?? '-' }}</p>
+                        </div>
+                        <div>
                             <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Nama Proyek</p>
                             <p class="text-sm font-bold text-slate-900">{{ $antrianmesin->proyekorder->namaproyek ?? '-' }}</p>
                         </div>
@@ -38,6 +42,18 @@
                         <div>
                             <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Nama Barang</p>
                             <p class="text-sm font-bold text-slate-900">{{ $antrianmesin->namabarang }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Tanggal Selesai</p>
+                            <p class="text-sm font-semibold text-slate-700">{{ $antrianmesin->tglcompleted ? \Carbon\Carbon::parse($antrianmesin->tglcompleted)->format('d M Y H.i') : '-' }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Dibuat</p>
+                            <p class="text-sm font-semibold text-slate-700">{{ $antrianmesin->created_at ? \Carbon\Carbon::parse($antrianmesin->created_at)->format('d M Y H.i') : '-' }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Diubah</p>
+                            <p class="text-sm font-semibold text-slate-700">{{ $antrianmesin->updated_at ? \Carbon\Carbon::parse($antrianmesin->updated_at)->format('d M Y H.i') : '-' }}</p>
                         </div>
                     </div>
                 </div>

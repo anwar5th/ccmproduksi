@@ -27,7 +27,22 @@ class ReportController extends Controller
     public function index(Request $request): View
     {
         // Build query with eager load
-        $query = Antrianmesin::with('proyekorder')->whereNotNull('tglcompleted')->orderBy('tglcompleted', 'desc');
+        $query = Antrianmesin::with([
+            'proyekorder:id,tglpo,kodepo,namaproyek'
+        ])
+            ->select([
+                'id',
+                'proyekorders_id', // WAJIB
+                'nospk',
+                'namabarang',
+                'qtybarang',
+                'tglspk',
+                'tglcompleted',
+                'created_at',
+                'updated_at',
+            ])
+            ->whereNotNull('tglcompleted')
+            ->orderBy('tglcompleted', 'desc');
 
         // Filters
         // filter berdasarkan proyek order (relasi)
@@ -36,6 +51,29 @@ class ReportController extends Controller
 
             $query->whereHas('proyekorder', function ($q) use ($po) {
                 $q->where('namaproyek', 'ILIKE', '%' . $po . '%');
+            });
+        }
+
+        if ($request->filled('kodepo')) {
+            $kodepo = $request->kodepo;
+
+            $query->whereHas('proyekorder', function ($q) use ($kodepo) {
+                $q->where('kodepo', 'ILIKE', '%' . $kodepo . '%');
+            });
+        }
+        if ($request->filled('tglpo_from')) {
+            $tglpo_from = $request->tglpo_from;
+
+            $query->whereHas('proyekorder', function ($q) use ($tglpo_from) {
+                $q->whereDate('tglpo', '>=', $tglpo_from);
+            });
+        }
+
+        if ($request->filled('tglpo_to')) {
+            $tglpo_to = $request->tglpo_to;
+
+            $query->whereHas('proyekorder', function ($q) use ($tglpo_to) {
+                $q->whereDate('tglpo', '<=', $tglpo_to);
             });
         }
 
