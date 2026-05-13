@@ -23,6 +23,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     //route resource
+    Route::get('/proyekorders/{id}/pdf', [\App\Http\Controllers\ProyekOrderController::class, 'printPdf'])->name('proyekorders.pdf');
     Route::resource('/proyekorders', \App\Http\Controllers\ProyekOrderController::class);
     Route::resource('/antrianmesin', \App\Http\Controllers\AntrianMesinController::class);
     Route::get('/report/export', [\App\Http\Controllers\ReportController::class, 'export'])->name('report.export');

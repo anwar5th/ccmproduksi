@@ -103,6 +103,14 @@
                                                 </svg>
                                                 Ubah
                                             </a>
+
+                                            <a href="{{ route('proyekorders.pdf', $po->id) }}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-red-50 text-red-700 hover:bg-red-100 border border-red-200 rounded-md transition-colors text-sm font-semibold shadow-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-1">
+                                                    <path fill-rule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 013.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 013.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 01-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875zM12.75 12a.75.75 0 00-1.5 0v2.25a.75.75 0 001.5 0V12zM9 12a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0V12z" clip-rule="evenodd" />
+                                                    <path d="M14.25 12a.75.75 0 01.75-.75h.75a.75.75 0 010 1.5h-.75V15a.75.75 0 01-1.5 0v-3z" />
+                                                </svg>
+                                                PDF
+                                            </a>
                                             
                                             @csrf
                                             @method('DELETE')

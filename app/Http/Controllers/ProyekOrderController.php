@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
+
 class ProyekOrderController extends Controller
 {
    /**
@@ -183,5 +186,22 @@ class ProyekOrderController extends Controller
 
         //redirect to index
         return redirect()->route('proyekorders.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+
+    /**
+     * Print PDF Detail Proyek Order
+     */
+    public function printPdf($id)
+    {
+        // Ambil data (gunakan Eager Loading jika ada relasi lanjutan nantinya, contoh: with('spk'))
+        $proyekorders = Proyekorder::findOrFail($id);
+        // Set locale Indonesia untuk format tanggal Printer
+        Carbon::setLocale('id');
+        $dateNow = Carbon::now()->translatedFormat('d F Y');
+        // Load view PDF
+        $pdf = Pdf::loadView('proyekorders.pdf', compact('proyekorders', 'dateNow'))
+                  ->setPaper('a4', 'portrait');
+        // Buka di tab baru (stream) dengan nama file yang representatif
+        return $pdf->stream('ProyekOrder-' . $proyekorders->kodepo . '.pdf');
     }
 }
