@@ -17,6 +17,9 @@ use Illuminate\Http\RedirectResponse;
 //import Facade "Storage"
 use Illuminate\Support\Facades\Storage;
 
+use App\Exports\LaporanProduksiExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ReportController extends Controller
 {
  /**
@@ -192,6 +195,18 @@ class ReportController extends Controller
 
         //render view with post
         return view('report.show', compact('antrianmesin')); // compact adalah mengambil variabel $antrianmesin yg ada di atas
+    }
+
+    public function export(Request $request)
+    {
+        // Validasi opsional
+        $request->validate([
+            'tglcompleted_from' => 'nullable|date',
+            'tglcompleted_to'   => 'nullable|date|after_or_equal:tglcompleted_from',
+        ]);
+        $fileName = 'laporan-produksi-' . now()->format('Y-m-d') . '.xlsx';
+        // Lakukan proses eksport, file otomatis di-download
+        return Excel::download(new LaporanProduksiExport($request), $fileName);
     }
     
 }
