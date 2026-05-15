@@ -100,12 +100,12 @@ class LaporanProduksiExport implements FromQuery, WithHeadings, WithMapping, Sho
         return [
             $antrian->proyekorder->namaproyek ?? '-',
             $antrian->proyekorder->kodepo ?? '-',
-            $antrian->proyekorder->tglpo ? Carbon::parse($antrian->proyekorder->tglpo)->format('d-m-Y H:i') : '-',
+            $antrian->proyekorder->tglpo ? Carbon::parse($antrian->proyekorder->tglpo)->format('d M Y H.i') : '-',
             $antrian->nospk ?? '-',
-            $antrian->tglspk ? Carbon::parse($antrian->tglspk)->format('d-m-Y H:i') : '-',
+            $antrian->tglspk ? Carbon::parse($antrian->tglspk)->format('d M Y H.i') : '-',
             $antrian->namabarang ?? '-',
             $antrian->qtybarang ?? 0,
-            $antrian->tglcompleted ? Carbon::parse($antrian->tglcompleted)->format('d-m-Y H:i') : '-',
+            $antrian->tglcompleted ? Carbon::parse($antrian->tglcompleted)->format('d M Y H.i') : '-',
         ];
     }
 }
