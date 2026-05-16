@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Backend & Web Server
+  fcm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fcm
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    env_file: .env
+    volumes:
+      - .:/var/www/html
+      - ./storage:/var/www/html/storage
+    depends_on:
+      - db
+    networks:
+      - fcm_network
+
+  # Database
+  db:
+    image: postgres:12-alpine
+    container_name: postgres_db
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - fcm_network
+
+  # Frontend (Hanya untuk Lokal / Development)
+  fcm_node:
+    image: node:20.19.5
+    container_name: fcm_node
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "5173:5173"
+    command: npm run dev
+    networks:
+      - fcm_network
+
+networks:
+  fcm_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
