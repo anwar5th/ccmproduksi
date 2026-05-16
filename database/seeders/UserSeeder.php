@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'password' => '$2y$10$YaHPyXEi6yt1IfNEJ/OqoOG2mkYWrys6WdI4lz61QZW8UNOTDStPS',
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 2,
             ],
             [
                 'name' => 'User',
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
                 'password' => '$2y$10$HVUecFZp5nW14SqgP0H1UORLkHmusVibHzxoIbxwr3eolXffcFiq.',
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role' => 1
             ]
         ]);
     }
