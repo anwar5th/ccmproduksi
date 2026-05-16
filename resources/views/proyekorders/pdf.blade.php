@@ -105,6 +105,7 @@
             page-break-after: always;
         }
     </style>
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/fcslogo.png') }}">
 </head>
 <body>
 
