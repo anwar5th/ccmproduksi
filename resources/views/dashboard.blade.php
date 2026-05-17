@@ -1,14 +1,14 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            
+
             <div class="mb-8 px-4 sm:px-0">
                 <h3 class="text-2xl font-bold text-slate-900">Selamat Datang di FCS</h3>
                 <p class="text-slate-500 mt-1">Sistem Manajemen Produksi Furniture</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-0">
-                
+
                 <!-- Card 1 -->
                 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
                     <div class="flex items-center justify-between mb-4">
@@ -52,13 +52,32 @@
                 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
                     <div class="flex items-center justify-between mb-4">
                         <div class="h-12 w-12 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                             </svg>
                         </div>
                     </div>
-                    <h4 class="text-lg font-semibold text-slate-900 mb-2">4. Laporan Mesin</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed flex-grow">Detail laporan antrian mesin dan statistik operasional terdapat pada menu <span class="font-medium text-indigo-600">"Antrian Mesin"</span> tombol Detail.</p>
+                    <h4 class="text-lg font-semibold text-slate-900 mb-2">4. Antrian Mesin</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed flex-grow">Detail antrian mesin dan statistik operasional terdapat pada menu <span class="font-medium text-indigo-600">"Antrian Mesin"</span> tombol Detail.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="h-12 w-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <h4 class="text-lg font-semibold text-slate-900 mb-2">5. Laporan Produksi</h4>
+
+                    <p class="text-sm text-slate-600 leading-relaxed flex-grow">
+                        SPK dan antrian mesin yang telah selesai dikerjakan dapat dilihat pada menu
+                        <span class="font-medium text-rose-600">"Laporan"</span>.
+                        Data laporan juga dapat di-export ke
+                        <span class="font-medium text-emerald-600">Excel</span> untuk kebutuhan rekap dan analisa produksi.
+                    </p>
                 </div>
 
             </div>
