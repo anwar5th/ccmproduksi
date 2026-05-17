@@ -14,7 +14,7 @@
 </head>
 <body class="font-sans antialiased text-slate-900 bg-slate-50 min-h-screen flex flex-col">
     <!-- Main Content / Hero -->
-    <main class="flex-grow flex items-center justify-center relative overflow-hidden">
+    <main class="flex-grow md:flex md:flex-wrap items-center justify-center relative overflow-hidden">
         <!-- Background Pattern -->
         <x-application-ccm class="block h-10 w-auto fill-current text-slate-800" />
         <div class="absolute inset-0 bg-[url('https://laravel.com/assets/img/welcome/background.svg')] bg-center bg-no-repeat opacity-5"></div>
