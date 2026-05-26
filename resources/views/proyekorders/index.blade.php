@@ -42,12 +42,12 @@
 
                             <div class="sm:col-span-1">
                                 <label class="block text-xs font-medium text-slate-600 mb-1">Tgl SPK dari</label>
-                                <input name="tglpo_from" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglpo_from') }}">
+                                <input id="tglpo_from" name="tglpo_from" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglpo_from') }}">
                             </div>
 
                             <div class="sm:col-span-1">
                                 <label class="block text-xs font-medium text-slate-600 mb-1">sampai</label>
-                                <input name="tglpo_to" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglpo_to') }}">
+                                <input id="tglpo_to" name="tglpo_to" type="date" class="block w-full pl-3 pr-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none sm:text-sm" value="{{ request('tglpo_to') }}">
                             </div>
 
                             <div class="sm:col-span-6 flex items-end justify-end gap-2 mt-2 sm:mt-0">
@@ -65,8 +65,8 @@
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Kode PO</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Nama PO</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Tanggal PO</th>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">List Item SPK</th>
-                                <th scope="col" class="px-6 py-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">Aksi</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider" style="min-width: 10rem">List Item SPK</th>
+                                <th scope="col" class="px-6 py-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider" style="max-width: 8rem">Aksi</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Dibuat</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Diubah</th>
                             </tr>
@@ -83,11 +83,11 @@
                                     <td class="px-6 py-5 whitespace-nowrap text-sm text-slate-600">
                                         {{ $po->tglpo ? \Carbon\Carbon::parse($po->tglpo)->format('d M Y H.i') : '-' }}
                                     </td>
-                                    <td class="px-6 py-5 text-sm text-slate-600 break-all max-w-md prose prose-sm prose-slate">
+                                    <td class="px-6 py-5 text-sm text-slate-600 break-all max-w-md prose prose-sm prose-slate" style="min-width: 10rem">
                                         {!! $po->keteranganpoitem !!}
                                     </td>
-                                    <td class="px-6 py-5 whitespace-nowrap text-right text-sm font-medium">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $po->id) }}" method="POST" class="inline-flex items-center gap-2">
+                                    <td class="px-6 py-5 whitespace-nowrap flex flex-wrap text-right text-sm font-medium" style="max-width: 8rem">
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $po->id) }}" method="POST" class="flex flex-wrap items-center gap-2">
                                             
                                             <a href="{{ route('proyekorders.show', $po->id) }}" class="inline-flex items-center px-3 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 rounded-md transition-colors text-sm font-semibold shadow-sm">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 mr-1">
