@@ -17,9 +17,11 @@ use Illuminate\Http\RedirectResponse;
 //import Facade "Storage"
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Auth;
+
 class AntrianMesinController extends Controller
 {
- /**
+    /**
      * index
      *
      * @return View
@@ -60,7 +62,7 @@ class AntrianMesinController extends Controller
 
         // Page length / per page
         $perPage = $request->perPage ? (int) $request->perPage : 10;
-        $allowed = [5,10,25,50,100];
+        $allowed = [5, 10, 25, 50, 100];
         if (!in_array($perPage, $allowed)) {
             $perPage = 10;
         }
@@ -76,7 +78,7 @@ class AntrianMesinController extends Controller
 
     // MEMBUAT CONTROLLER CREATE
 
-/**
+    /**
      * create
      *
      * @return View
@@ -87,7 +89,6 @@ class AntrianMesinController extends Controller
         $proyekorders = Proyekorder::all();
 
         return view('antrianmesin.create');
-    
     }
 
     /**
@@ -100,8 +101,15 @@ class AntrianMesinController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'nospk'     => 'required|min:3',
+            'nospk'      => 'required|min:3|unique:antrianmesins,nospk',
             'namabarang'   => 'required|min:5'
+        ], [
+            'nospk.required' => 'No SPK wajib diisi.',
+            'nospk.min'      => 'No SPK minimal 3 karakter.',
+            'nospk.unique'   => 'No SPK sudah terdaftar.',
+
+            'namabarang.required' => 'Nama barang wajib diisi.',
+            'namabarang.min'      => 'Nama barang minimal 5 karakter.',
         ]);
 
         //create Antrianmesin
@@ -138,10 +146,12 @@ class AntrianMesinController extends Controller
         ]);
 
         //redirect to index
-        return redirect()->route('listspk.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        $payloadSuccess = ['success' => 'Data Berhasil Disimpan!'];
+        $route = Auth::user()->role == 1 ? 'proyekorders.index' : 'listspk.index';
+        return redirect()->route($route)->with($payloadSuccess);
     }
 
-       /**
+    /**
      * show
      *
      * @param  mixed $id
@@ -155,6 +165,4 @@ class AntrianMesinController extends Controller
         //render view with post
         return view('antrianmesin.show', compact('antrianmesin')); // compact adalah mengambil variabel $antrianmesin yg ada di atas
     }
-    
 }
-

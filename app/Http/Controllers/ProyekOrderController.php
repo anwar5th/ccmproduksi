@@ -121,9 +121,10 @@ class ProyekOrderController extends Controller
     {
         //get Proyekorder by ID
         $proyekorders = Proyekorder::findOrFail($id);
+        $listspk = Antrianmesin::with('proyekorder')->where('proyekorders_id', $id)->orderByRaw('tglcompleted IS NULL DESC')->orderBy('tglspk', 'desc')->get();
 
         //render view with Proyekorder
-        return view('proyekorders.show', compact('proyekorders'));
+        return view('proyekorders.show', compact('proyekorders', 'listspk'));
     }
 
         /**

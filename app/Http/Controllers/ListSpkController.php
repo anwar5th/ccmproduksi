@@ -93,12 +93,17 @@ class ListSpkController extends Controller
     {
         //get post by ID
         $listspk = Antrianmesin::findOrFail($id);
+        $listspk = compact('listspk');
 
         //get Proyekorder by ID
-        $proyekorders = Proyekorder::findOrFail($id);
+        $proyekorders = Proyekorder::findOrFail($listspk['listspk']->proyekorders_id);
+        $proyekorders = compact('proyekorders');
 
         //render view with post
-        return view('listspk.edit', compact('proyekorders' , 'listspk'));
+        return view('listspk.edit', [
+            'listspk' => $listspk['listspk'],
+            'proyekorders' => $proyekorders['proyekorders']
+        ]);
     }
     
     /**
