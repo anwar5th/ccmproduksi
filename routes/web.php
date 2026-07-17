@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/proyekorders/{id}/pdf', [\App\Http\Controllers\ProyekOrderController::class, 'printPdf'])->name('proyekorders.pdf');
     Route::resource('/proyekorders', \App\Http\Controllers\ProyekOrderController::class);
     Route::resource('/antrianmesin', \App\Http\Controllers\AntrianMesinController::class);
+    Route::resource('/mesin', \App\Http\Controllers\MesinController::class);
+    Route::get('/antrian/mesin/{mesin}', [\App\Http\Controllers\MesinController::class, 'showQueue'])->name('antrian.mesin.show');
+    Route::post('/antrian/mesin/{mesin}/update/{antrianId}', [\App\Http\Controllers\MesinController::class, 'updateQueue'])->name('antrian.mesin.update');
     Route::get('/report/export', [\App\Http\Controllers\ReportController::class, 'export'])->name('report.export');
     Route::resource('/report', \App\Http\Controllers\ReportController::class);
     Route::resource('/listspk', \App\Http\Controllers\ListSpkController::class);

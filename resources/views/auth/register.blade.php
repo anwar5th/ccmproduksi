@@ -27,6 +27,9 @@
                 <option value="" disabled {{ old('role') ? '' : 'selected' }}>- Pilih Role -</option>
                 <option value="1" {{ old('role') == '1' ? 'selected' : '' }}>1 - Engineering & Estimator</option>
                 <option value="2" {{ old('role') == '2' ? 'selected' : '' }}>2 - Admin Produksi</option>
+                <option value="3" {{ old('role') == '3' ? 'selected' : '' }}>3 - Operator</option>
+                <option value="4" {{ old('role') == '4' ? 'selected' : '' }}>4 - Administrator</option>
+                <option value="5" {{ old('role') == '5' ? 'selected' : '' }}>5 - IT</option>
             </select>
             <x-input-error :messages="$errors->get('role')" class="mt-1 text-red-600 text-xs" />
         </div>

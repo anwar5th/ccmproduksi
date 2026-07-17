@@ -12,12 +12,14 @@
             
             <div class="bg-white shadow-sm rounded-xl border border-slate-200 overflow-hidden">
                 <div class="pt-6 pr-6 flex items-center justify-end gap-4">
-                    <a href="{{ route('proyekorders.create')}}" class="inline-flex items-center px-4 py-2 bg-emerald-600 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-emerald-700 focus:bg-emerald-700 active:bg-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition ease-in-out duration-150 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 mr-2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                        PO Baru
-                    </a>
+                @if(Auth::user()->role == 1 || Auth::user()->role == 2 || Auth::user()->role == 4)
+                <a href="{{ route('proyekorders.create')}}" class="inline-flex items-center px-4 py-2 bg-emerald-600 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-emerald-700 focus:bg-emerald-700 active:bg-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition ease-in-out duration-150 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 mr-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    PO Baru
+                </a>
+                @endif
                 </div>
                 <div class="p-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     
@@ -63,7 +65,7 @@
                         <thead class="bg-slate-50">
                             <tr>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Kode PO</th>
-                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Nama PO</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-650 uppercase tracking-wider">Nama PO</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Tanggal PO</th>
                                 <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider" style="min-width: 10rem">List Item SPK</th>
                                 <th scope="col" class="px-6 py-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider" style="max-width: 8rem">Aksi</th>
@@ -86,36 +88,38 @@
                                     <td class="px-6 py-5 text-sm text-slate-600 break-all max-w-md prose prose-sm prose-slate" style="min-width: 10rem">
                                         {!! $po->keteranganpoitem !!}
                                     </td>
-                                    <td class="px-6 py-5 whitespace-nowrap flex flex-wrap text-right text-sm font-medium" style="max-width: 8rem">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $po->id) }}" method="POST" class="flex flex-wrap items-center gap-2">
-                                            
-                                            <a href="{{ route('proyekorders.show', $po->id) }}" class="inline-flex items-center px-3 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 rounded-md transition-colors text-sm font-semibold shadow-sm">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 mr-1">
-                                                    <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                                                </svg>
-                                                Buat SPK
-                                            </a>
-                                            
-                                            <a href="{{ route('proyekorders.edit', $po->id) }}" class="inline-flex items-center px-3 py-1.5 bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 rounded-md transition-colors text-sm font-semibold shadow-sm">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 mr-1">
-                                                    <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
-                                                    <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
-                                                </svg>
-                                                Ubah
-                                            </a>
+                                        <td class="px-6 py-5 whitespace-nowrap flex flex-wrap text-right text-sm font-medium" style="max-width: 8rem">
+                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('proyekorders.destroy', $po->id) }}" method="POST" class="flex flex-wrap items-center gap-2">
+                                                
+                                                <a href="{{ route('proyekorders.show', $po->id) }}" class="inline-flex items-center px-3 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 rounded-md transition-colors text-sm font-semibold shadow-sm">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 mr-1">
+                                                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                                                    </svg>
+                                                    Buat SPK
+                                                </a>
 
-                                            <a href="{{ route('proyekorders.pdf', $po->id) }}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-red-50 text-red-700 hover:bg-red-100 border border-red-200 rounded-md transition-colors text-sm font-semibold shadow-sm">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-1">
-                                                    <path fill-rule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 013.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 013.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 01-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875zM12.75 12a.75.75 0 00-1.5 0v2.25a.75.75 0 001.5 0V12zM9 12a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0V12z" clip-rule="evenodd" />
-                                                    <path d="M14.25 12a.75.75 0 01.75-.75h.75a.75.75 0 010 1.5h-.75V15a.75.75 0 01-1.5 0v-3z" />
-                                                </svg>
-                                                PDF
-                                            </a>
-                                            
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                    </td>
+                                                @if(Auth::user()->role == 1 || Auth::user()->role == 2 || Auth::user()->role == 4)
+                                                <a href="{{ route('proyekorders.edit', $po->id) }}" class="inline-flex items-center px-3 py-1.5 bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 rounded-md transition-colors text-sm font-semibold shadow-sm">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 mr-1">
+                                                        <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
+                                                        <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
+                                                    </svg>
+                                                    Ubah
+                                                </a>
+
+                                                <a href="{{ route('proyekorders.pdf', $po->id) }}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-red-50 text-red-700 hover:bg-red-100 border border-red-200 rounded-md transition-colors text-sm font-semibold shadow-sm">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-1">
+                                                        <path fill-rule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 013.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 013.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 01-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875zM12.75 12a.75.75 0 00-1.5 0v2.25a.75.75 0 001.5 0V12zM9 12a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0V12z" clip-rule="evenodd" />
+                                                        <path d="M14.25 12a.75.75 0 01.75-.75h.75a.75.75 0 010 1.5h-.75V15a.75.75 0 01-1.5 0v-3z" />
+                                                    </svg>
+                                                    PDF
+                                                </a>
+                                                @endif
+
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        </td>
                                     <td class="px-6 py-5 whitespace-nowrap text-sm text-slate-600">
                                         {{ $po->created_at ? \Carbon\Carbon::parse($po->created_at)->format('d M Y H.i') : '-' }}
                                     </td>

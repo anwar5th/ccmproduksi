@@ -13,6 +13,8 @@ class Proyekorder extends Model
     protected $fillable = [
         'kodepo',
         'namaproyek',
+        'dimensi',
+        'drawing_path',
         'tglpo',
         'keteranganpoitem',
     ];

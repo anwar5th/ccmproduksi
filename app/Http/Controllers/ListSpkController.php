@@ -19,6 +19,8 @@ use Illuminate\Http\RedirectResponse;
 //import Facade "Storage"
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Auth;
+
 class ListSpkController extends Controller
 {
  /**
@@ -121,9 +123,6 @@ class ListSpkController extends Controller
             'namabarang'   => 'required|min:5'
         ]);
 
-        //get proyekorder by ID
-        $proyekorders = Proyekorder::findOrFail($id);
-
         //get antrianmesin by ID
         $listspk = Antrianmesin::findOrFail($id);
 
@@ -131,6 +130,8 @@ class ListSpkController extends Controller
             'proyekorders_id'     => $request->proyekorders_id,
             'nospk'     => $request->nospk,
             'tglspk'   => $request->tglspk,
+            'deadline' => $request->deadline,
+            'prioritas' => $request->prioritas,
             'namabarang'   => $request->namabarang,
             'qtybarang'   => $request->qtybarang,
 
@@ -138,28 +139,64 @@ class ListSpkController extends Controller
             'tglkhotpress'   => $request->tglkhotpress,
             'kethotpress'   => $request->kethotpress,
 
-            'tglmbasic'   => $request->tglmbasic,
-            'tglkbasic'   => $request->tglkbasic,
-            'ketbasic'   => $request->ketbasic,
+            'tglmrunningsaw'   => $request->tglmrunningsaw,
+            'tglkrunningsaw'   => $request->tglkrunningsaw,
+            'ketrunningsaw'   => $request->ketrunningsaw,
 
-            'tglmedging'   => $request->tglmedging,
-            'tglkedging'   => $request->tglkedging,
-            'ketedging'   => $request->ketedging,
+            'tglmcnc5axis'   => $request->tglmcnc5axis,
+            'tglkcnc5axis'   => $request->tglkcnc5axis,
+            'ketcnc5axis'   => $request->ketcnc5axis,
 
-            'tglmcnc'   => $request->tglmcnc,
-            'tglkcnc'   => $request->tglkcnc,
-            'ketcnc'   => $request->ketcnc,
+            'tglmcnc4axis'   => $request->tglmcnc4axis,
+            'tglkcnc4axis'   => $request->tglkcnc4axis,
+            'ketcnc4axis'   => $request->ketcnc4axis,
 
-            'tglmtukang'   => $request->tglmtukang,
-            'tglktukang'   => $request->tglktukang,
-            'kettukang'   => $request->kettukang,
+            'tglmboring'   => $request->tglmboring,
+            'tglkboring'   => $request->tglkboring,
+            'ketboring'   => $request->ketboring,
+
+            'tglmrouter'   => $request->tglmrouter,
+            'tglkrouter'   => $request->tglkrouter,
+            'ketrouter'   => $request->ketrouter,
+
+            'tglmrakit'   => $request->tglmrakit,
+            'tglkrakit'   => $request->tglkrakit,
+            'ketrakit'   => $request->ketrakit,
 
             'tglmfinish'   => $request->tglmfinish,
             'tglkfinish'   => $request->tglkfinish,
             'ketfinish'   => $request->ketfinish,
 
-            'tglcompleted'   => !empty($request->tglcompleted) ? $request->tglcompleted : null
+            'tglcompleted'   => !empty($request->tglcompleted) ? $request->tglcompleted : null,
+            'updated_by'     => Auth::id()
         ]);
+
+        // Update dimensi dan drawing pada Proyekorder terkait
+        if ($listspk->proyekorders_id) {
+            $proyekorder = Proyekorder::find($listspk->proyekorders_id);
+            if ($proyekorder) {
+                $poData = [];
+
+                // Update dimensi jika ada input
+                if ($request->filled('dimensi')) {
+                    $poData['dimensi'] = $request->dimensi;
+                }
+
+                // Upload drawing jika ada file baru
+                if ($request->hasFile('drawing')) {
+                    // Hapus file lama jika ada
+                    if ($proyekorder->drawing_path) {
+                        Storage::delete($proyekorder->drawing_path);
+                    }
+                    $drawingPath = $request->file('drawing')->store('drawings', 'public');
+                    $poData['drawing_path'] = $drawingPath;
+                }
+
+                if (!empty($poData)) {
+                    $proyekorder->update($poData);
+                }
+            }
+        }
 
         //redirect to index
         return redirect()->route('listspk.index')->with(['success' => 'Data Berhasil Diubah!']);

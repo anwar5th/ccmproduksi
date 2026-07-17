@@ -51,7 +51,7 @@
                         </div>
 
                         <!-- Basic SPK Info -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             <div>
                                 <label for="nospk" class="block text-sm font-semibold text-slate-700">No SPK</label>
                                 <input type="text" id="nospk" name="nospk" value="{{ old('nospk') }}" minlength="3" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm {{ $errors->has('nospk') ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : '' }}">
@@ -64,6 +64,22 @@
                                 <label for="tglspk" class="block text-sm font-semibold text-slate-700">Tanggal SPK</label>
                                 <input type="datetime-local" id="tglspk" name="tglspk" value="{{ old('tglspk') ? \Carbon\Carbon::parse(old('tglspk'))->format('Y-m-d\TH:i') : '' }}" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm {{ $errors->has('tglspk') ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : '' }}">
                                 @error('tglspk')
+                                <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="deadline" class="block text-sm font-semibold text-slate-700">Deadline</label>
+                                <input type="date" id="deadline" name="deadline" value="{{ old('deadline') ? \Carbon\Carbon::parse(old('deadline'))->format('Y-m-d') : '' }}" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm {{ $errors->has('deadline') ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : '' }}">
+                                @error('deadline')
+                                <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="prioritas" class="block text-sm font-semibold text-slate-700">Prioritas (Angka)</label>
+                                <input type="number" id="prioritas" name="prioritas" value="{{ old('prioritas') }}" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm {{ $errors->has('prioritas') ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : '' }}" placeholder="Contoh: 1">
+                                @error('prioritas')
                                 <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>

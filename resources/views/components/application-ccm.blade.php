@@ -1,1 +1,1 @@
-<img src="{{ asset('img/bg-fcs.png') }}">
+<img src="{{ asset('img/bg-fcs.png') }}" style="max-height: 56px; width: auto; object-fit: contain;">

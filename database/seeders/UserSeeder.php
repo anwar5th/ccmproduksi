@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -15,21 +16,46 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'name' => 'Admin',
+                'name' => 'Engineering & Estimator',
+                'email' => 'user@user.com',
+                'password' => Hash::make('password'),
+                'created_at' => now(),
+                'updated_at' => now(),
+                'role' => 1,
+            ],
+            [
+                'name' => 'Admin Produksi',
                 'email' => 'admin@admin.com',
-                'password' => '$2y$10$YaHPyXEi6yt1IfNEJ/OqoOG2mkYWrys6WdI4lz61QZW8UNOTDStPS',
+                'password' => Hash::make('password'),
                 'created_at' => now(),
                 'updated_at' => now(),
                 'role' => 2,
             ],
             [
-                'name' => 'User',
-                'email' => 'user@user.com',
-                'password' => '$2y$10$HVUecFZp5nW14SqgP0H1UORLkHmusVibHzxoIbxwr3eolXffcFiq.',
+                'name' => 'Operator',
+                'email' => 'operator@operator.com',
+                'password' => Hash::make('password'),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'role' => 1
+                'role' => 3,
+            ],
+            [
+                'name' => 'Administrator',
+                'email' => 'administrator@administrator.com',
+                'password' => Hash::make('password'),
+                'created_at' => now(),
+                'updated_at' => now(),
+                'role' => 4,
+            ],
+            [
+                'name' => 'IT Support',
+                'email' => 'it@it.com',
+                'password' => Hash::make('password'),
+                'created_at' => now(),
+                'updated_at' => now(),
+                'role' => 5,
             ]
         ]);
     }
 }
+

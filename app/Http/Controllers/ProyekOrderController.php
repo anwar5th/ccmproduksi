@@ -95,16 +95,16 @@ class ProyekOrderController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'kodepo'     => 'required|min:3',
-            'keteranganpoitem'   => 'required|min:5'
+            'kodepo'          => 'required|min:3',
+            'keteranganpoitem' => 'required|min:5',
         ]);
 
         //create Proyekorder
         Proyekorder::create([
-            'kodepo'     => $request->kodepo,
-            'namaproyek'   => $request->namaproyek,
-            'tglpo'   => $request->tglpo,
-            'keteranganpoitem'   => $request->keteranganpoitem
+            'kodepo'           => $request->kodepo,
+            'namaproyek'       => $request->namaproyek,
+            'tglpo'            => $request->tglpo,
+            'keteranganpoitem' => $request->keteranganpoitem
         ]);
 
         //redirect to index
@@ -153,18 +153,18 @@ class ProyekOrderController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'kodepo'     => 'required|min:3',
-            'keteranganpoitem'   => 'required|min:5'
+            'kodepo'          => 'required|min:3',
+            'keteranganpoitem' => 'required|min:5',
         ]);
 
         //get post by ID
         $proyekorders = Proyekorder::findOrFail($id);
 
         $proyekorders->update([
-            'kodepo'     => $request->kodepo,
-            'namaproyek'   => $request->namaproyek,
-            'tglpo'   => $request->tglpo,
-            'keteranganpoitem'   => $request->keteranganpoitem
+            'kodepo'           => $request->kodepo,
+            'namaproyek'       => $request->namaproyek,
+            'tglpo'            => $request->tglpo,
+            'keteranganpoitem' => $request->keteranganpoitem
         ]);
 
         //redirect to index
@@ -181,6 +181,10 @@ class ProyekOrderController extends Controller
     {
         //get post by ID
         $proyekorders = Proyekorder::findOrFail($id);
+
+        if ($proyekorders->drawing_path) {
+            Storage::disk('public')->delete($proyekorders->drawing_path);
+        }
 
         //delete post
         $proyekorders->delete();

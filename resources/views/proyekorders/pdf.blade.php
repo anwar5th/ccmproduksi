@@ -138,6 +138,11 @@
                 <td class="info-value">{{ $proyekorders->namaproyek ?? '-' }}</td>
             </tr>
             <tr>
+                <td class="info-label">Dimensi</td>
+                <td class="info-colon">:</td>
+                <td class="info-value">{{ $proyekorders->dimensi ?? '-' }}</td>
+            </tr>
+            <tr>
                 <td class="info-label">Tanggal Proyek Order</td>
                 <td class="info-colon">:</td>
                 <td class="info-value">

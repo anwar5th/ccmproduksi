@@ -22,7 +22,7 @@
                     </span>
                 </div>
                 <div class="p-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div>
                             <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Nama Proyek</p>
                             <p class="text-sm font-bold text-slate-900">{{ $antrianmesin->proyekorder->namaproyek ?? '-' }}</p>
@@ -34,6 +34,14 @@
                         <div>
                             <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Tanggal Turun SPK</p>
                             <p class="text-sm font-semibold text-slate-700">{{ $antrianmesin->tglspk ? \Carbon\Carbon::parse($antrianmesin->tglspk)->format('d M Y H.i') : '-' }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Deadline</p>
+                            <p class="text-sm font-semibold text-slate-700">{{ $antrianmesin->deadline ? \Carbon\Carbon::parse($antrianmesin->deadline)->format('d M Y') : '-' }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Prioritas</p>
+                            <p class="text-sm font-bold {{ $antrianmesin->prioritas == 1 ? 'text-red-600' : 'text-slate-900' }}">{{ $antrianmesin->prioritas ?? '-' }}</p>
                         </div>
                         <div>
                             <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Nama Barang</p>
@@ -52,21 +60,17 @@
                     <div class="space-y-4">
                         
                         @php
-                            $machines = [
-                                ['id' => 'hotpress', 'name' => 'Hot Press'],
-                                ['id' => 'basic', 'name' => 'R.Saw / Basic'],
-                                ['id' => 'edging', 'name' => 'Edging'],
-                                ['id' => 'cnc', 'name' => 'CNC'],
-                                ['id' => 'tukang', 'name' => 'Tk. Kayu'],
-                                ['id' => 'finish', 'name' => 'Finishing'],
-                            ];
+                            $activeMesins = \App\Models\Mesin::where('status', 'aktif')->orderBy('id', 'asc')->get();
                         @endphp
 
-                        @foreach($machines as $machine)
+                        @foreach($activeMesins as $mesin)
+                            @php
+                                $code = preg_replace('/[^a-z0-9]/', '', strtolower($mesin->nama_mesin));
+                            @endphp
                             <div class="bg-white border border-slate-200 rounded-lg overflow-hidden flex flex-col md:flex-row">
                                 <!-- Machine Name (Left) -->
                                 <div class="bg-slate-100 px-6 py-4 md:w-48 flex items-center border-b md:border-b-0 md:border-r border-slate-200">
-                                    <span class="font-bold text-slate-800">{{ $machine['name'] }}</span>
+                                    <span class="font-bold text-slate-800">{{ $mesin->nama_mesin }}</span>
                                 </div>
                                 
                                 <!-- Status Content (Right) -->
@@ -75,9 +79,9 @@
                                     <!-- Tanggal Masuk -->
                                     <div class="px-4 py-3 bg-white">
                                         <p class="text-xs font-semibold text-slate-500 mb-1">Tanggal Masuk</p>
-                                        @if($antrianmesin->{'tglm'.$machine['id']})
+                                        @if($antrianmesin->{'tglm'.$code})
                                             <p class="text-sm font-medium text-amber-700 bg-amber-50 inline-block px-2 py-0.5 rounded border border-amber-200">
-                                                {{ \Carbon\Carbon::parse($antrianmesin->{'tglm'.$machine['id']})->format('d M Y H.i') }}
+                                                {{ \Carbon\Carbon::parse($antrianmesin->{'tglm'.$code})->format('d M Y H.i') }}
                                             </p>
                                         @else
                                             <p class="text-sm text-slate-400">-</p>
@@ -87,9 +91,9 @@
                                     <!-- Tanggal Keluar -->
                                     <div class="px-4 py-3 bg-white">
                                         <p class="text-xs font-semibold text-slate-500 mb-1">Tanggal Selesai</p>
-                                        @if($antrianmesin->{'tglk'.$machine['id']})
+                                        @if($antrianmesin->{'tglk'.$code})
                                             <p class="text-sm font-medium text-emerald-700 bg-emerald-50 inline-block px-2 py-0.5 rounded border border-emerald-200">
-                                                {{ \Carbon\Carbon::parse($antrianmesin->{'tglk'.$machine['id']})->format('d M Y H.i') }}
+                                                {{ \Carbon\Carbon::parse($antrianmesin->{'tglk'.$code})->format('d M Y H.i') }}
                                             </p>
                                         @else
                                             <p class="text-sm text-slate-400">-</p>
@@ -99,8 +103,8 @@
                                     <!-- Keterangan -->
                                     <div class="px-4 py-3 bg-white md:col-span-1">
                                         <p class="text-xs font-semibold text-slate-500 mb-1">Keterangan</p>
-                                        @if($antrianmesin->{'ket'.$machine['id']})
-                                            <p class="text-sm text-slate-700 break-words">{{ $antrianmesin->{'ket'.$machine['id']} }}</p>
+                                        @if($antrianmesin->{'ket'.$code})
+                                            <p class="text-sm text-slate-700 break-words">{{ $antrianmesin->{'ket'.$code} }}</p>
                                         @else
                                             <p class="text-sm text-slate-400 italic">Tidak ada keterangan</p>
                                         @endif

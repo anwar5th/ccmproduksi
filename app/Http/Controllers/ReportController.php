@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Exports\LaporanProduksiExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -150,6 +151,8 @@ class ReportController extends Controller
             'proyekorders_id'     => $request->proyekorders_id,
             'nospk'     => $request->nospk,
             'tglspk'   => $request->tglspk,
+            'deadline' => $request->deadline,
+            'prioritas' => $request->prioritas,
             'namabarang'   => $request->namabarang,
             'qtybarang'   => $request->qtybarang,
 
@@ -157,25 +160,35 @@ class ReportController extends Controller
             'tglkhotpress'   => $request->tglkhotpress,
             'kethotpress'   => $request->kethotpress,
 
-            'tglmbasic'   => $request->tglmbasic,
-            'tglkbasic'   => $request->tglkbasic,
-            'ketbasic'   => $request->ketbasic,
+            'tglmrunningsaw'   => $request->tglmrunningsaw,
+            'tglkrunningsaw'   => $request->tglkrunningsaw,
+            'ketrunningsaw'   => $request->ketrunningsaw,
 
-            'tglmedging'   => $request->tglmedging,
-            'tglkedging'   => $request->tglkedging,
-            'ketedging'   => $request->ketedging,
+            'tglmcnc5axis'   => $request->tglmcnc5axis,
+            'tglkcnc5axis'   => $request->tglkcnc5axis,
+            'ketcnc5axis'   => $request->ketcnc5axis,
 
-            'tglmcnc'   => $request->tglmcnc,
-            'tglkcnc'   => $request->tglkcnc,
-            'ketcnc'   => $request->ketcnc,
+            'tglmcnc4axis'   => $request->tglmcnc4axis,
+            'tglkcnc4axis'   => $request->tglkcnc4axis,
+            'ketcnc4axis'   => $request->ketcnc4axis,
 
-            'tglmtukang'   => $request->tglmtukang,
-            'tglktukang'   => $request->tglktukang,
-            'kettukang'   => $request->kettukang,
+            'tglmboring'   => $request->tglmboring,
+            'tglkboring'   => $request->tglkboring,
+            'ketboring'   => $request->ketboring,
+
+            'tglmrouter'   => $request->tglmrouter,
+            'tglkrouter'   => $request->tglkrouter,
+            'ketrouter'   => $request->ketrouter,
+
+            'tglmrakit'   => $request->tglmrakit,
+            'tglkrakit'   => $request->tglkrakit,
+            'ketrakit'   => $request->ketrakit,
 
             'tglmfinish'   => $request->tglmfinish,
             'tglkfinish'   => $request->tglkfinish,
-            'ketfinish'   => $request->ketfinish
+            'ketfinish'   => $request->ketfinish,
+
+            'created_by' => Auth::id()
         ]);
 
         //redirect to index

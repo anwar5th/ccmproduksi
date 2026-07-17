@@ -29,7 +29,17 @@ class AntrianMesinController extends Controller
     public function index(Request $request): View
     {
         // Build query with eager load
-        $query = Antrianmesin::with('proyekorder')->whereNull('tglcompleted')->orderBy('tglspk', 'desc');
+        $twoDaysFromNow = \Carbon\Carbon::now()->addDays(2)->toDateString();
+        $query = Antrianmesin::with('proyekorder')
+            ->whereNull('tglcompleted')
+            ->orderByRaw("
+                CASE 
+                    WHEN deadline IS NOT NULL AND deadline <= ? THEN 1
+                    WHEN prioritas IS NOT NULL THEN prioritas
+                    ELSE 999999
+                END ASC
+            ", [$twoDaysFromNow])
+            ->orderBy('created_at', 'asc');
 
         // Filters
         // filter berdasarkan proyek order (relasi)
@@ -117,6 +127,8 @@ class AntrianMesinController extends Controller
             'proyekorders_id'     => $request->proyekorders_id,
             'nospk'     => $request->nospk,
             'tglspk'   => $request->tglspk,
+            'deadline' => $request->deadline,
+            'prioritas' => $request->prioritas,
             'namabarang'   => $request->namabarang,
             'qtybarang'   => $request->qtybarang,
 
@@ -124,31 +136,40 @@ class AntrianMesinController extends Controller
             'tglkhotpress'   => $request->tglkhotpress,
             'kethotpress'   => $request->kethotpress,
 
-            'tglmbasic'   => $request->tglmbasic,
-            'tglkbasic'   => $request->tglkbasic,
-            'ketbasic'   => $request->ketbasic,
+            'tglmrunningsaw'   => $request->tglmrunningsaw,
+            'tglkrunningsaw'   => $request->tglkrunningsaw,
+            'ketrunningsaw'   => $request->ketrunningsaw,
 
-            'tglmedging'   => $request->tglmedging,
-            'tglkedging'   => $request->tglkedging,
-            'ketedging'   => $request->ketedging,
+            'tglmcnc5axis'   => $request->tglmcnc5axis,
+            'tglkcnc5axis'   => $request->tglkcnc5axis,
+            'ketcnc5axis'   => $request->ketcnc5axis,
 
-            'tglmcnc'   => $request->tglmcnc,
-            'tglkcnc'   => $request->tglkcnc,
-            'ketcnc'   => $request->ketcnc,
+            'tglmcnc4axis'   => $request->tglmcnc4axis,
+            'tglkcnc4axis'   => $request->tglkcnc4axis,
+            'ketcnc4axis'   => $request->ketcnc4axis,
 
-            'tglmtukang'   => $request->tglmtukang,
-            'tglktukang'   => $request->tglktukang,
-            'kettukang'   => $request->kettukang,
+            'tglmboring'   => $request->tglmboring,
+            'tglkboring'   => $request->tglkboring,
+            'ketboring'   => $request->ketboring,
+
+            'tglmrouter'   => $request->tglmrouter,
+            'tglkrouter'   => $request->tglkrouter,
+            'ketrouter'   => $request->ketrouter,
+
+            'tglmrakit'   => $request->tglmrakit,
+            'tglkrakit'   => $request->tglkrakit,
+            'ketrakit'   => $request->ketrakit,
 
             'tglmfinish'   => $request->tglmfinish,
             'tglkfinish'   => $request->tglkfinish,
-            'ketfinish'   => $request->ketfinish
+            'ketfinish'   => $request->ketfinish,
+
+            'created_by' => Auth::id()
         ]);
 
-        //redirect to index
+        //redirect to back
         $payloadSuccess = ['success' => 'Data Berhasil Disimpan!'];
-        $route = Auth::user()->role == 1 ? 'proyekorders.index' : 'listspk.index';
-        return redirect()->route($route)->with($payloadSuccess);
+        return redirect()->route('proyekorders.show', $request->proyekorders_id)->with($payloadSuccess);
     }
 
     /**
